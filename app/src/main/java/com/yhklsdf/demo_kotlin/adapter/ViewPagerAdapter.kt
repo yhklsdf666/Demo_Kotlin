@@ -28,6 +28,9 @@ class ViewPagerAdapter(val fm: FragmentManager): FragmentPagerAdapter (fm){
         return items.size
     }
 
+    /**
+     * 为Tablayout而重写的一个方法
+     */
     override fun getPageTitle(position: Int): CharSequence? {
         return items[position]
     }
