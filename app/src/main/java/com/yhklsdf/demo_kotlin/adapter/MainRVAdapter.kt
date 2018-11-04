@@ -20,7 +20,6 @@ import org.jetbrains.anko.coroutines.experimental.bg
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.db.update
-import org.jetbrains.anko.startActivity
 
 class MainRVAdapter(val mList: MutableList<ItemEntity>, val type: String) : RecyclerView.Adapter<MainRVAdapter.ViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
