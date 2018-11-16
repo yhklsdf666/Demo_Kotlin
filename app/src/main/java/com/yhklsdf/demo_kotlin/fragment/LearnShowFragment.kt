@@ -2,12 +2,14 @@ package com.yhklsdf.demo_kotlin.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.yhklsdf.demo_kotlin.R
 import com.yhklsdf.demo_kotlin.adapter.MainRVAdapter
 import com.yhklsdf.demo_kotlin.db.database
 import com.yhklsdf.demo_kotlin.entity.ItemEntity
@@ -24,7 +26,7 @@ import org.jetbrains.anko.db.update
 import org.jetbrains.anko.toast
 import org.jsoup.Jsoup
 
-class ShowFragment : Fragment() {
+class LearnShowFragment : Fragment() {
 
     private var mRecycleView: RecyclerView? = null
     /*表示可修改的*/
@@ -35,6 +37,8 @@ class ShowFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (mRecycleView == null) {
             mRecycleView = RecyclerView(this.activity!!)
+            //设置背景颜色
+            mRecycleView!!.setBackgroundColor(ContextCompat.getColor(activity!!,R.color.recycleView_background))
             mRecycleView!!.layoutManager = LinearLayoutManager(activity)
 
             val url = arguments?.getString("url")

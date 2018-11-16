@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.yhklsdf.demo_kotlin.fragment.ShowFragment
+import com.yhklsdf.demo_kotlin.fragment.LearnShowFragment
 
 class ViewPagerAdapter(val fm: FragmentManager): FragmentPagerAdapter (fm){
 
@@ -19,7 +19,7 @@ class ViewPagerAdapter(val fm: FragmentManager): FragmentPagerAdapter (fm){
         val bundle = Bundle()
         bundle.putString("url",urls[p0])
         bundle.putString("type",items[p0])
-        val fragment = ShowFragment()
+        val fragment = LearnShowFragment()
         fragment.arguments = bundle
         return fragment
     }

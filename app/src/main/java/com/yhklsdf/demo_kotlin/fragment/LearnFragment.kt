@@ -12,12 +12,11 @@ import android.widget.ImageView
 import com.yhklsdf.demo_kotlin.LottieActivity
 import com.yhklsdf.demo_kotlin.R
 import com.yhklsdf.demo_kotlin.adapter.ViewPagerAdapter
-import kotlinx.android.synthetic.main.activity_kotlin.*
 
-class KotlinFragment : Fragment() {
+class LearnFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.activity_kotlin, null)
+        val view = inflater.inflate(R.layout.fragment_kotlin, null)
         val viewPager = view.findViewById<ViewPager>(R.id.main_viewpager)
         val tabLayout = view.findViewById<TabLayout>(R.id.main_tab_layout)
         val imageView = view.findViewById<ImageView>(R.id.imageView)
@@ -28,7 +27,7 @@ class KotlinFragment : Fragment() {
             val intent = Intent(activity, LottieActivity::class.java)
             startActivity(intent)
 //            val view = LayoutInflater.from(this).inflate(R.layout.item_lottie, null)
-//            val dialog = AlertDialog.Builder(this@KotlinFragment)
+//            val dialog = AlertDialog.Builder(this@LearnFragment)
 ////            设置点击对话框内容之外对话框消失
 ////            dialog.setCanceledOnTouchOutside(true)
 //            dialog.setView(view)

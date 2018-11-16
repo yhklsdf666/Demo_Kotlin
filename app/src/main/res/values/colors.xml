@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="tabLayout_tabSelectedTextColor" >#2962ff</color>
     <color name="tabLayout_tabTextColor" >#e0e0e0</color>
-    <color name="line_linecolor">#616161</color>
+    <color name="line_lineColor">#616161</color>
+    <color name="recycleView_background">#181a19</color>
+    <color name="recycleView_item">#101211</color>
+    <color name="tabLayout_sTextColor">#febd2f</color>
 
 </resources>

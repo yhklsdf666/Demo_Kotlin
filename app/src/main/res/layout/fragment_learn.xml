@@ -18,8 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:alpha="0.6"
-        android:background="@color/line_linecolor"/>
-    
+        android:background="@color/line_lineColor"/>
+
     <!--<android.support.design.widget.TabLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="80dp"-->
@@ -30,34 +30,32 @@
     <RadioGroup
         android:id="@+id/rg_main_bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
+        android:layout_height="45dp"
+        android:background="@color/recycleView_background"
         android:gravity="center"
-        android:background="@android:color/white">
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rbtn_main_bottom_learn"
+            style="@style/main_RadioGroupButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="学习"
-            android:drawableTop="@drawable/ic_main_tablayout_learn"
-            style="@style/main_RadioGroupButtonStyle"/>
+            android:drawableTop="@drawable/ic_main_tablayout_learn" />
 
         <RadioButton
             android:id="@+id/rbtn_main_bottom_picture"
+            style="@style/main_RadioGroupButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="图片"
-            android:drawableTop="@drawable/ic_main_tablayout_picture"
-            style="@style/main_RadioGroupButtonStyle"/>
+            android:drawableTop="@drawable/ic_main_tablayout_picture" />
 
         <RadioButton
             android:id="@+id/rbtn_main_bottom_tools"
+            style="@style/main_RadioGroupButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="工具"
-            android:drawableTop="@drawable/ic_main_tablayout_tools"
-            style="@style/main_RadioGroupButtonStyle"/>
+            android:layout_marginTop="2dp"
+            android:drawableTop="@drawable/ic_main_tablayout_tools" />
 
     </RadioGroup>
 
