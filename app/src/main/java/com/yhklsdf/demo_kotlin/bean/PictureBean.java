@@ -1,6 +1,6 @@
 package com.yhklsdf.demo_kotlin.bean;
 
-public class Picture {
+public class PictureBean {
 
     private String url;
 

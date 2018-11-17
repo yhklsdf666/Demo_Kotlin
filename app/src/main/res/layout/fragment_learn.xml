@@ -101,7 +101,7 @@
         tools:layout_editor_absoluteY="213dp">
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/main_tab_layout"
+            android:id="@+id/learn_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/recycleView_background"
@@ -112,7 +112,7 @@
             app:tabSelectedTextColor="@color/tabLayout_sTextColor" />
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/main_viewpager"
+            android:id="@+id/learn_viewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />

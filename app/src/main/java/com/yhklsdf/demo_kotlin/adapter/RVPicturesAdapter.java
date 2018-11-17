@@ -11,18 +11,18 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.yhklsdf.demo_kotlin.R;
-import com.yhklsdf.demo_kotlin.bean.Picture;
+import com.yhklsdf.demo_kotlin.bean.PictureBean;
 import com.yhklsdf.demo_kotlin.utils.ImageLoaderUtil;
 
 import java.util.List;
 
 public class RVPicturesAdapter extends RecyclerView.Adapter<RVPicturesAdapter.viewHolder> {
 
-    private List<Picture> mPicturesList;
+    private List<PictureBean> mPicturesList;
     private Context mContext;
     private ImageLoaderUtil mImageLoader;
 
-    public RVPicturesAdapter(List<Picture> picturesList) {
+    public RVPicturesAdapter(List<PictureBean> picturesList) {
         mImageLoader = ImageLoaderUtil.getInstance(mContext);
         mPicturesList = picturesList;
     }

@@ -2,24 +2,24 @@ package com.yhklsdf.demo_kotlin.mediamvp;
 
 import android.annotation.SuppressLint;
 
+import com.yhklsdf.demo_kotlin.base.BasePresenter;
 import com.yhklsdf.demo_kotlin.bean.PictureBean;
+import com.yhklsdf.demo_kotlin.bean.VideoBean;
 
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
+public class PlayVideosPresenter<V extends PlayVideosContract.View> extends PlayVideosContract.Present<V> {
 
-public class ShowPicturesPresenter<V extends ShowPicturesContract.View> extends ShowPicturesContract.Present<V>{
-
-    private ShowPicturesContract.model mShowPicturesModel = new IShowPicturesImpl();
+    private PlayVideosContract.Model mIPlayVideosModel = new IPlayVideosImpl();
 
     @SuppressLint("CheckResult")
     @Override
-    void rxRequestPictures(List<PictureBean> pictures, String url) {
-        mShowPicturesModel.rxRequestPictures(pictures,url)
+    void rxRequestVideos(String url, List<VideoBean> videos) {
+        mIPlayVideosModel.rxRequestVideos(url, videos)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<String>() {
@@ -30,5 +30,6 @@ public class ShowPicturesPresenter<V extends ShowPicturesContract.View> extends 
                         }
                     }
                 });
+
     }
 }

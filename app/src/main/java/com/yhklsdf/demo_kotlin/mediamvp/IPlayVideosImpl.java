@@ -3,6 +3,7 @@ package com.yhklsdf.demo_kotlin.mediamvp;
 import android.util.Log;
 
 import com.yhklsdf.demo_kotlin.bean.PictureBean;
+import com.yhklsdf.demo_kotlin.bean.VideoBean;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -16,24 +17,24 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 
-public class IShowPicturesImpl implements ShowPicturesContract.model {
+public class IPlayVideosImpl implements PlayVideosContract.Model{
     private int i = 1;
 
     @Override
-    public Observable<String> rxRequestPictures(final List<PictureBean> pictures, final String url) {
+    public Observable<String> rxRequestVideos(final String url, final List<VideoBean> videos) {
         return Observable
                 .create(new ObservableOnSubscribe<String>() {
                     @Override
                     public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                        final String TAG = "PicturesShowFragment";
                         try {
                             Document jsoup = Jsoup.connect(url + i++).get();
+
                             Elements elements = jsoup.select("#content > div:nth-child(2) > div > div > div.item");
                             for (Element element : elements) {
-                                PictureBean picture = new PictureBean();
-                                picture.setUrl(element.select("a > img").attr("src"));
-                                Log.d(TAG, "run: " + element.attr("style"));
-                                pictures.add(picture);
+                                VideoBean video = new VideoBean();
+                                video.setVideoUrl("https:" + element.select("a > div").attr("data-mp4"));
+                                video.setPlaceholderPicture(element.select("a > div > img").attr("src"));
+                               videos.add(video);
                             }
                             emitter.onNext("success");
                         } catch (IOException e) {

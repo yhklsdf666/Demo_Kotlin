@@ -2,11 +2,11 @@ package com.yhklsdf.demo_kotlin.base;
 
 import java.lang.ref.WeakReference;
 
-public class BasePresenter<T> {
+public class BasePresenter<V> {
 
-    public WeakReference<T> mViewRef;
+    public WeakReference<V> mViewRef;
 
-    public void attachView(T view) {
+    public void attachView(V view) {
         mViewRef = new WeakReference<>(view);
     }
 

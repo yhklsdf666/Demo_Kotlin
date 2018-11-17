@@ -24,7 +24,7 @@ import org.jetbrains.anko.db.select
 import org.jetbrains.anko.db.update
 import org.jsoup.Jsoup
 
-class LearnShowFragment : Fragment() {
+class ShowLearnFragment : Fragment() {
 
     private var mRecycleView: RecyclerView? = null
     /*表示可修改的*/

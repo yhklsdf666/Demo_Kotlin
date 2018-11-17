@@ -43,7 +43,7 @@
             android:drawableTop="@drawable/ic_main_tablayout_learn" />
 
         <RadioButton
-            android:id="@+id/rbtn_main_bottom_picture"
+            android:id="@+id/rbtn_main_bottom_media"
             style="@style/main_RadioGroupButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

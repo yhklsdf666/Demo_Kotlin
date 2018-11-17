@@ -23,7 +23,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.yhklsdf.demo_kotlin.R;
 import com.yhklsdf.demo_kotlin.adapter.RVPicturesAdapter;
-import com.yhklsdf.demo_kotlin.bean.Picture;
+import com.yhklsdf.demo_kotlin.bean.PictureBean;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -43,7 +43,7 @@ public class PicturesShowFragment extends Fragment {
     @BindView(R.id.srl_show_picture_refresh)
     SmartRefreshLayout srlShowPictureRefresh;
     Unbinder unbinder;
-    private List<Picture> list = new ArrayList<>();
+    private List<PictureBean> list = new ArrayList<>();
     private RecyclerView recyclerView;
     private RVPicturesAdapter mPicturesRVAdapter;
     private String url = "https://pixabay.com/en/editors_choice/?media_type=photo&pagi=";
@@ -106,7 +106,7 @@ public class PicturesShowFragment extends Fragment {
                     Document jsoup = Jsoup.connect(url + i++).get();
                     Elements elements = jsoup.select("#content > div:nth-child(2) > div > div > div.item");
                     for (Element element : elements) {
-                        Picture picture = new Picture();
+                        PictureBean picture = new PictureBean();
                         picture.setUrl(element.select("a > img").attr("src"));
                         Log.d(TAG, "run: " + element.attr("style"));
                         list.add(picture);

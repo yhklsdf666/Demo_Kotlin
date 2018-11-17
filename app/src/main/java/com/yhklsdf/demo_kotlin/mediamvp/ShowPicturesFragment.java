@@ -1,5 +1,7 @@
 package com.yhklsdf.demo_kotlin.mediamvp;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
@@ -14,7 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.yhklsdf.demo_kotlin.R;
 import com.yhklsdf.demo_kotlin.adapter.RVPicturesAdapter;
 import com.yhklsdf.demo_kotlin.base.BaseFragment;
-import com.yhklsdf.demo_kotlin.bean.Picture;
+import com.yhklsdf.demo_kotlin.bean.PictureBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,22 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
     RecyclerView rvShowPicturesContainer;
     @BindView(R.id.srl_show_picture_refresh)
     SmartRefreshLayout srlShowPictureRefresh;
-    List<Picture> mPictures = new ArrayList<>();
+    private List<PictureBean> mPictures = new ArrayList<>();
+    //加入Bundle获取参数
+    private static Bundle mBundle;
+    //单例模式
+    private static ShowPicturesFragment intance;
+
+    @SuppressLint("ValidFragment")
+    private ShowPicturesFragment() { }
+
+    public static synchronized ShowPicturesFragment getIntance(Bundle bundle) {
+        if (intance == null) {
+            intance = new ShowPicturesFragment();
+            mBundle = bundle;
+        }
+        return intance;
+    }
 
     @Override
     protected ShowPicturesPresenter<ShowPicturesContract.View> createPresenter() {
@@ -47,17 +64,18 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
         mPicturesRVAdapter = new RVPicturesAdapter(mPictures);
         rvShowPicturesContainer.setAdapter(mPicturesRVAdapter);
 
-        presenter.rxRequestPictures(mPictures);
+        final String url = mBundle.getString("url");
+        presenter.rxRequestPictures(mPictures,url);
         srlShowPictureRefresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                presenter.rxRequestPictures(mPictures);
+                presenter.rxRequestPictures(mPictures,url);
                 srlShowPictureRefresh.finishLoadMore();
             }
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                presenter.rxRequestPictures(mPictures);
+                presenter.rxRequestPictures(mPictures,url);
                 srlShowPictureRefresh.finishRefresh();
             }
         });

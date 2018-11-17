@@ -17,8 +17,8 @@ class LearnFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_learn, null)
-        val viewPager = view.findViewById<ViewPager>(R.id.main_viewpager)
-        val tabLayout = view.findViewById<TabLayout>(R.id.main_tab_layout)
+        val viewPager = view.findViewById<ViewPager>(R.id.learn_viewpager)
+        val tabLayout = view.findViewById<TabLayout>(R.id.learn_tab_layout)
         val imageView = view.findViewById<ImageView>(R.id.imageView)
         //getFragmentManager到的是activity对所包含fragment的Manager，而如果是fragment嵌套fragment，那么就需要利用getChildFragmentManager()了,此处用childFragmentManager，不然切换数据会消失
         viewPager.adapter = ViewPagerAdapter(childFragmentManager)
