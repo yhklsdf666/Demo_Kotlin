@@ -1,5 +1,6 @@
 package com.yhklsdf.demo_kotlin.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,13 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
 
     protected T presenter;
     Unbinder unbinder;
+    Context mContext;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = getActivity();
+    }
 
     @Nullable
     @Override

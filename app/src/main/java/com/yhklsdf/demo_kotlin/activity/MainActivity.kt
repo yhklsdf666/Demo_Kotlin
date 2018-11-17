@@ -7,11 +7,11 @@ import com.yhklsdf.demo_kotlin.R
 import com.yhklsdf.demo_kotlin.fragment.EmptyFragment
 import com.yhklsdf.demo_kotlin.fragment.LearnFragment
 import com.yhklsdf.demo_kotlin.mediamvp.ShowPicturesFragment
+import com.yhklsdf.demo_kotlin.utils.FragmentUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,18 +19,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        var learnFragment = LearnFragment()
+        val showPicturesFragment = ShowPicturesFragment()
+        val emptyFragment = EmptyFragment()
+
         rg_main_bottom_navigation.setOnCheckedChangeListener { group, checkedId ->
-            var fragment: Fragment? = null
             when (checkedId) {
-                R.id.rbtn_main_bottom_learn -> fragment = LearnFragment()
-                R.id.rbtn_main_bottom_picture -> fragment = ShowPicturesFragment()
+                R.id.rbtn_main_bottom_learn -> FragmentUtil.replaceFragment(supportFragmentManager, learnFragment)
+                R.id.rbtn_main_bottom_picture -> FragmentUtil.replaceFragment(supportFragmentManager, showPicturesFragment)
                 R.id.rbtn_main_bottom_tools -> {
                     toast("工具")
-                    fragment = EmptyFragment()
+                    FragmentUtil.replaceFragment(supportFragmentManager, emptyFragment)
                 }
-            }
-            if (fragment != null) {
-                supportFragmentManager.beginTransaction().replace(R.id.fl_main_home_container, fragment).commit()
             }
         }
         rbtn_main_bottom_picture.isChecked = true
