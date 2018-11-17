@@ -51,14 +51,18 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
         srlShowPictureRefresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                presenter.rxRequestPictures(mPictures);
-                srlShowPictureRefresh.finishLoadMore();
+                if (srlShowPictureRefresh != null) {
+                    presenter.rxRequestPictures(mPictures);
+                    srlShowPictureRefresh.finishLoadMore();
+                }
             }
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                presenter.rxRequestPictures(mPictures);
-                srlShowPictureRefresh.finishRefresh();
+                if (srlShowPictureRefresh != null) {
+                    presenter.rxRequestPictures(mPictures);
+                    srlShowPictureRefresh.finishRefresh();
+                }
             }
         });
     }
