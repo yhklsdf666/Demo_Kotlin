@@ -8,12 +8,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.yhklsdf.demo_kotlin.R
-import com.yhklsdf.demo_kotlin.adapter.MainRVAdapter
+import com.yhklsdf.demo_kotlin.adapter.RVMainAdapter
 import com.yhklsdf.demo_kotlin.db.database
-import com.yhklsdf.demo_kotlin.entity.ItemEntity
-import com.yhklsdf.demo_kotlin.entity.LikeModel
+import com.yhklsdf.demo_kotlin.bean.ItemLearnRv
+import com.yhklsdf.demo_kotlin.db.LikeModel
 import com.yhklsdf.demo_kotlin.event.LikeEvent
 import com.yhklsdf.demo_kotlin.utils.RxBus
 import kotlinx.coroutines.experimental.android.UI
@@ -23,14 +22,13 @@ import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.db.update
-import org.jetbrains.anko.toast
 import org.jsoup.Jsoup
 
 class LearnShowFragment : Fragment() {
 
     private var mRecycleView: RecyclerView? = null
     /*表示可修改的*/
-    private var mList = mutableListOf<ItemEntity>()
+    private var mList = mutableListOf<ItemLearnRv>()
 
     private var type: String? = null
 
@@ -113,7 +111,7 @@ class LearnShowFragment : Fragment() {
                         val image = i.select("div.lessonimg-box > a > img").attr("src")
                         val time_and_class = i.select("div.lesson-infor > div > div:nth-child(1) > dl > dd.mar-b8 > em").text()
 
-                        val entity = ItemEntity(title = title, url = url, describe = describe, iamge = image, time_and_class = time_and_class, is_like = false)
+                        val entity = ItemLearnRv(title = title, url = url, describe = describe, iamge = image, time_and_class = time_and_class, is_like = false)
                         mList.add(entity)
                     }
                 }
@@ -137,7 +135,7 @@ class LearnShowFragment : Fragment() {
 
             result.await()  //?
 
-            mRecycleView!!.adapter = MainRVAdapter(mList, type!!)
+            mRecycleView!!.adapter = RVMainAdapter(mList, type!!)
         }
     }
 }

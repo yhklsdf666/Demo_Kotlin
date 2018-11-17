@@ -22,8 +22,8 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.yhklsdf.demo_kotlin.R;
-import com.yhklsdf.demo_kotlin.adapter.PicturesRVAdapter;
-import com.yhklsdf.demo_kotlin.db.Picture;
+import com.yhklsdf.demo_kotlin.adapter.RVPicturesAdapter;
+import com.yhklsdf.demo_kotlin.bean.Picture;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,14 +38,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class ShowPicturesFragment extends Fragment {
+public class PicturesShowFragment extends Fragment {
 
     @BindView(R.id.srl_show_picture_refresh)
     SmartRefreshLayout srlShowPictureRefresh;
     Unbinder unbinder;
     private List<Picture> list = new ArrayList<>();
     private RecyclerView recyclerView;
-    private PicturesRVAdapter mPicturesRVAdapter;
+    private RVPicturesAdapter mPicturesRVAdapter;
     private String url = "https://pixabay.com/en/editors_choice/?media_type=photo&pagi=";
     private int i = 1;
 
@@ -78,7 +78,7 @@ public class ShowPicturesFragment extends Fragment {
 //        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
         initList();
-        mPicturesRVAdapter = new PicturesRVAdapter(list);
+        mPicturesRVAdapter = new RVPicturesAdapter(list);
         recyclerView.setAdapter(mPicturesRVAdapter);
         unbinder = ButterKnife.bind(this, view);
 
@@ -99,7 +99,7 @@ public class ShowPicturesFragment extends Fragment {
 
     private void initList() {
         new Thread(new Runnable() {
-            private static final String TAG = "ShowPicturesFragment";
+            private static final String TAG = "PicturesShowFragment";
             @Override
             public void run() {
                 try {

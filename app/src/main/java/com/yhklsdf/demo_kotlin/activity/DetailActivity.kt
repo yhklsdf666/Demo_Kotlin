@@ -1,11 +1,9 @@
-package com.yhklsdf.demo_kotlin
+package com.yhklsdf.demo_kotlin.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.webkit.WebSettings
-import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.yhklsdf.demo_kotlin.R
 import com.yhklsdf.demo_kotlin.event.LikeEvent
 import com.yhklsdf.demo_kotlin.utils.RxBus
 import kotlinx.android.synthetic.main.activity_detail.*

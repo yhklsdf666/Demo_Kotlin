@@ -1,4 +1,4 @@
-package com.yhklsdf.demo_kotlin.adapter;
+package com.yhklsdf.demo_kotlin.base;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;

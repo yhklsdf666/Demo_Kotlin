@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".activity.MainActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".LottieActivity"
+        <activity android:name=".activity.SplashActivity" />
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.LottieActivity"
             android:theme="@style/Base.Theme.AppCompat.Dialog"/>
     </application>
 

@@ -1,19 +1,20 @@
-package com.yhklsdf.demo_kotlin
+package com.yhklsdf.demo_kotlin.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import com.yhklsdf.demo_kotlin.R
 import com.yhklsdf.demo_kotlin.fragment.EmptyFragment
 import com.yhklsdf.demo_kotlin.fragment.LearnFragment
-import com.yhklsdf.demo_kotlin.fragment.ShowPicturesFragment
-import kotlinx.android.synthetic.main.fragment_learn.*
+import com.yhklsdf.demo_kotlin.mediamvp.ShowPicturesFragment
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_learn)
+        setContentView(R.layout.activity_main)
         initView()
     }
 

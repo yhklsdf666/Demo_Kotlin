@@ -1,4 +1,4 @@
-package com.yhklsdf.demo_kotlin.db;
+package com.yhklsdf.demo_kotlin.bean;
 
 public class Picture {
 

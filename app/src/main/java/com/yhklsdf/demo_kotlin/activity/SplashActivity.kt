@@ -1,7 +1,8 @@
-package com.yhklsdf.demo_kotlin
+package com.yhklsdf.demo_kotlin.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.yhklsdf.demo_kotlin.R
 
 class SplashActivity : AppCompatActivity() {
 

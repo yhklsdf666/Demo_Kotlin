@@ -2,12 +2,12 @@ package com.yhklsdf.demo_kotlin.adapter
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.yhklsdf.demo_kotlin.db.PicturesData
+import com.yhklsdf.demo_kotlin.bean.Picture
 
 class JTK {
     private val url = ""
 
-    fun test(): PicturesData? {
-        return Gson().fromJson<PicturesData>(url, object : TypeToken<List<PicturesData>>() {}.type)
+    fun test(): Picture? {
+        return Gson().fromJson<Picture>(url, object : TypeToken<List<Picture>>() {}.type)
     }
 }

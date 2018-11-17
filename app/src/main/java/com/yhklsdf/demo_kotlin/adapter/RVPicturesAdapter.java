@@ -1,36 +1,29 @@
 package com.yhklsdf.demo_kotlin.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.MediaController;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.google.android.flexbox.AlignSelf;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.yhklsdf.demo_kotlin.R;
-import com.yhklsdf.demo_kotlin.db.Picture;
-import com.yhklsdf.demo_kotlin.utils.ImageLoader;
+import com.yhklsdf.demo_kotlin.bean.Picture;
+import com.yhklsdf.demo_kotlin.utils.ImageLoaderUtil;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
 
-public class PicturesRVAdapter extends RecyclerView.Adapter<PicturesRVAdapter.viewHolder> {
+public class RVPicturesAdapter extends RecyclerView.Adapter<RVPicturesAdapter.viewHolder> {
 
     private List<Picture> mPicturesList;
     private Context mContext;
-    private ImageLoader mImageLoader;
+    private ImageLoaderUtil mImageLoader;
 
-    public PicturesRVAdapter(List<Picture> picturesList) {
-        mImageLoader = ImageLoader.getInstance(mContext);
+    public RVPicturesAdapter(List<Picture> picturesList) {
+        mImageLoader = ImageLoaderUtil.getInstance(mContext);
         mPicturesList = picturesList;
     }
 

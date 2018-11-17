@@ -9,14 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.yhklsdf.demo_kotlin.LottieActivity
+import com.yhklsdf.demo_kotlin.activity.LottieActivity
 import com.yhklsdf.demo_kotlin.R
 import com.yhklsdf.demo_kotlin.adapter.ViewPagerAdapter
 
 class LearnFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_kotlin, null)
+        val view = inflater.inflate(R.layout.fragment_learn, null)
         val viewPager = view.findViewById<ViewPager>(R.id.main_viewpager)
         val tabLayout = view.findViewById<TabLayout>(R.id.main_tab_layout)
         val imageView = view.findViewById<ImageView>(R.id.imageView)
