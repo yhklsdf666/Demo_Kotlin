@@ -30,8 +30,8 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
         View view = LayoutInflater.from(getActivity()).inflate(initLayout(), container,false);
         unbinder = ButterKnife.bind(this,view);
         presenter = createPresenter();
-        initView();
         presenter.attachView((V)this);
+        initView();
         return view;
     }
 

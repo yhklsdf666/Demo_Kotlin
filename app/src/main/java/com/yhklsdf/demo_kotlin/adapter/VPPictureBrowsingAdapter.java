@@ -48,7 +48,9 @@ public class VPPictureBrowsingAdapter extends PagerAdapter{
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        if (containerTemp == null) containerTemp = container;
+        if (containerTemp == null) {
+            containerTemp = container;
+        }
         View view = cacheView.get(position);
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_picture_browsing, container, false);

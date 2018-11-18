@@ -43,6 +43,7 @@ public class VPMediaAdapter extends FragmentPagerAdapter {
                 return ShowPicturesFragment.getIntance(bundle);
             case POSITION_FRAGMENT_VIDEOS:
                 return PlayVideosFragment.getIntance(bundle);
+            default:
         }
         throw new RuntimeException("Unknown type");
     }

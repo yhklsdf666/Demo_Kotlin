@@ -34,7 +34,7 @@ public class IShowPicturesImpl implements ShowPicturesContract.model {
                                 picture.setUrl(elements.get(i).select("a > img").attr("src"));
                                 Log.d(TAG, "run: " + elements.get(i).attr("style"));
                                 pictures.add(picture);
-                            }
+                        }
                             emitter.onNext("success");
                         } catch (IOException e) {
                             e.printStackTrace();

@@ -25,7 +25,7 @@ public class ShowPicturesPresenter<V extends ShowPicturesContract.View> extends 
                 .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {
-                        if ("success".equals(s)) {
+                        if ("success".equals(s) && mViewRef.get() != null) {
                             mViewRef.get().notifyDataChanged();
                         }
                     }

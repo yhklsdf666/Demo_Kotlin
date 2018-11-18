@@ -132,6 +132,7 @@ public class ImageLoaderUtil {
                         break;
                     case -1:
                         break;
+                    default:
                 }
                 ImageLoaderUtil.getInstance(imageView.getContext()).removeTask(ImageTask.this);
             }
