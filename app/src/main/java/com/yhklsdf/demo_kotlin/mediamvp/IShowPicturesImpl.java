@@ -29,10 +29,10 @@ public class IShowPicturesImpl implements ShowPicturesContract.model {
                         try {
                             Document jsoup = Jsoup.connect(url + i++).get();
                             Elements elements = jsoup.select("#content > div:nth-child(2) > div > div > div.item");
-                            for (Element element : elements) {
+                            for (int i = 0; i < 20; i++) {
                                 PictureBean picture = new PictureBean();
-                                picture.setUrl(element.select("a > img").attr("src"));
-                                Log.d(TAG, "run: " + element.attr("style"));
+                                picture.setUrl(elements.get(i).select("a > img").attr("src"));
+                                Log.d(TAG, "run: " + elements.get(i).attr("style"));
                                 pictures.add(picture);
                             }
                             emitter.onNext("success");

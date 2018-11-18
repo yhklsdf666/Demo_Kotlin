@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.SparseArray;
 
 import com.yhklsdf.demo_kotlin.fragment.EmptyFragment;
+import com.yhklsdf.demo_kotlin.mediamvp.PlayVideosFragment;
 import com.yhklsdf.demo_kotlin.mediamvp.ShowPicturesFragment;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class VPMediaAdapter extends FragmentPagerAdapter {
             case POSITION_FRAGMENT_PICTURES:
                 return ShowPicturesFragment.getIntance(bundle);
             case POSITION_FRAGMENT_VIDEOS:
-                return new EmptyFragment();
+                return PlayVideosFragment.getIntance(bundle);
         }
         throw new RuntimeException("Unknown type");
     }

@@ -16,7 +16,7 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
 
     protected T presenter;
     Unbinder unbinder;
-    Context mContext;
+    protected Context mContext;
 
     @Override
     public void onAttach(Context context) {

@@ -5,6 +5,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.yhklsdf.demo_kotlin"
@@ -50,6 +54,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:2.2.0"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'cn.jzvd:jiaozivideoplayer:6.4.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.1.0'
 }
 kotlin {
     experimental {

@@ -17,7 +17,7 @@ import java.util.List;
 import cn.jzvd.Jzvd;
 import cn.jzvd.JzvdStd;
 
-public class RVVideosAdapter extends RecyclerView.Adapter<RVVideosAdapter.ViewHolder> {
+public class RVVideosAdapter extends RecyclerView.Adapter<RVVideosAdapter.viewHolder> {
 
     private List<VideoBean> mVideos;
     private Context mContext;
@@ -28,17 +28,14 @@ public class RVVideosAdapter extends RecyclerView.Adapter<RVVideosAdapter.ViewHo
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_videos_fragment_recycleview, viewGroup, false);)
+    public viewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        return new viewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_videos_fragment_recycleview, viewGroup, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.vpItemRVVideos.setUp(, );
-//        viewHolder..setUp(
-//                VideoConstant.videoUrls[0][position],
-//                VideoConstant.videoTitles[0][position], Jzvd.SCREEN_WINDOW_LIST);
-//        Glide.with(holder.jzvdStd.getContext()).load(VideoConstant.videoThumbs[0][position]).into(holder.jzvdStd.thumbImageView);
+    public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
+        viewHolder.vpItemRVVideos.setUp(mVideos.get(i).getVideoUrl(), "", Jzvd.SCREEN_WINDOW_LIST);
+        Glide.with(mContext).load(mVideos.get(i).getPlaceholderPicture()).into(viewHolder.vpItemRVVideos.thumbImageView);
     }
 
     @Override
@@ -46,9 +43,9 @@ public class RVVideosAdapter extends RecyclerView.Adapter<RVVideosAdapter.ViewHo
         return mVideos.size();
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder {
+    class viewHolder extends RecyclerView.ViewHolder {
         JzvdStd vpItemRVVideos;
-        protected ViewHolder(@NonNull View itemView) {
+        public viewHolder(@NonNull View itemView) {
 
             super(itemView);
             mContext = itemView.getContext();

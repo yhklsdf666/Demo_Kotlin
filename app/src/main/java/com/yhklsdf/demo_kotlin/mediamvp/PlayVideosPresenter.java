@@ -30,6 +30,5 @@ public class PlayVideosPresenter<V extends PlayVideosContract.View> extends Play
                         }
                     }
                 });
-
     }
 }

@@ -58,7 +58,7 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
         manager.setFlexDirection(FlexDirection.ROW);
         manager.setFlexWrap(FlexWrap.WRAP);
         manager.setAlignItems(AlignItems.STRETCH);
-        manager.setJustifyContent(JustifyContent.SPACE_BETWEEN);
+        manager.setJustifyContent(JustifyContent.SPACE_AROUND);
 
         rvShowPicturesContainer.setLayoutManager(manager);
         mPicturesRVAdapter = new RVPicturesAdapter(mPictures);
