@@ -16,6 +16,8 @@ public class PlayVideosContract {
 
     interface View extends IBaseView {
         void notifyDataChanged();
+
+        void dismissLAR();
     }
 
     interface Model extends IBaseModel {

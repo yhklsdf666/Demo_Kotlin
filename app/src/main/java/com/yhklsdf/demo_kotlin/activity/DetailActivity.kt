@@ -1,5 +1,6 @@
 package com.yhklsdf.demo_kotlin.activity
 
+import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebViewClient
@@ -27,7 +28,7 @@ class DetailActivity : AppCompatActivity() {
          * 设置标题和喜欢状态
          */
         val title = intent.getStringExtra("title")
-        val url = intent.getStringExtra("url")
+        url = intent.getStringExtra("url")
         type = intent.getStringExtra("type")
         is_like = intent.getBooleanExtra("is_like", false)
         detail_title.text = title
@@ -52,6 +53,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun startWebView() {
         val settings = detail_web_view.settings
         settings.javaScriptEnabled = true

@@ -16,6 +16,8 @@ public class ShowPicturesContract {
 
     interface View extends IBaseView {
         void notifyDataChanged();
+
+        void dismissLAR();
     }
 
     abstract static class Present<T> extends BasePresenter<T> {

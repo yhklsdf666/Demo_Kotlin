@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         var learnFragment = LearnFragment()
         val mediaFragment = MediaFragment()
         val emptyFragment = EmptyFragment()
+        //Activity重新创建时可以不完全销毁Fragment，当在onCreate()方法中调用了setRetainInstance(true)后，Fragment恢复时会跳过onCreate()和onDestroy()方法，因此不能在onCreate()中放置一些初始化逻辑
+        learnFragment.retainInstance = true
+        mediaFragment.retainInstance = true
+
 
         rg_main_bottom_navigation.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {

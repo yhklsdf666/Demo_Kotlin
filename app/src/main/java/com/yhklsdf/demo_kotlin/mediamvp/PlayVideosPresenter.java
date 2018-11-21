@@ -26,6 +26,7 @@ public class PlayVideosPresenter<V extends PlayVideosContract.View> extends Play
                     @Override
                     public void accept(String s) throws Exception {
                         if ("success".equals(s) && mViewRef.get() != null) {
+                            mViewRef.get().dismissLAR();
                             mViewRef.get().notifyDataChanged();
                         }
                     }

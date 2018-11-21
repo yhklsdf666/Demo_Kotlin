@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.yhklsdf.demo_kotlin.R;
 import com.yhklsdf.demo_kotlin.adapter.RVVideosAdapter;
 import com.yhklsdf.demo_kotlin.base.BaseFragment;
@@ -26,6 +27,7 @@ public class PlayVideosFragment extends BaseFragment<PlayVideosContract.View, Pl
     @BindView(R.id.srl_play_videos_refresh)
     SmartRefreshLayout srlPlayVideosRefresh;
     private List<VideoBean> mVideos = new ArrayList<>();
+    private boolean isFirstLoad = true;
     private RVVideosAdapter mVideosAdapter;
     private static PlayVideosFragment intance;
     private static Bundle sBundle;
@@ -53,13 +55,20 @@ public class PlayVideosFragment extends BaseFragment<PlayVideosContract.View, Pl
         mVideosAdapter = new RVVideosAdapter(mVideos);
         rvPlayVideosContainer.setAdapter(mVideosAdapter);
         rvPlayVideosContainer.setLayoutManager(new LinearLayoutManager(getActivity()));
-        presenter.rxRequestVideos(url, mVideos);
-
-        srlPlayVideosRefresh.setOnLoadMoreListener(new OnLoadMoreListener() {
+        if (isFirstLoad) {
+            presenter.rxRequestVideos(url, mVideos);
+            srlPlayVideosRefresh.autoRefresh();
+            isFirstLoad = false;
+        }
+        srlPlayVideosRefresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 presenter.rxRequestVideos(url, mVideos);
-                srlPlayVideosRefresh.finishLoadMore();
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                presenter.rxRequestVideos(url, mVideos);
             }
         });
     }
@@ -72,5 +81,11 @@ public class PlayVideosFragment extends BaseFragment<PlayVideosContract.View, Pl
     @Override
     public void notifyDataChanged() {
         mVideosAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void dismissLAR() {
+        srlPlayVideosRefresh.finishRefresh();
+        srlPlayVideosRefresh.finishLoadMore();
     }
 }

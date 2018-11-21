@@ -8,6 +8,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.FragmentUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.yhklsdf.demo_kotlin.R;
 import com.yhklsdf.demo_kotlin.adapter.VPPictureBrowsingAdapter;
 import com.yhklsdf.demo_kotlin.anim.DepthPageTransformer;

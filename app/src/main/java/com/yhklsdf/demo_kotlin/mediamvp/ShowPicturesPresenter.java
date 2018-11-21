@@ -26,6 +26,7 @@ public class ShowPicturesPresenter<V extends ShowPicturesContract.View> extends 
                     @Override
                     public void accept(String s) throws Exception {
                         if ("success".equals(s) && mViewRef.get() != null) {
+                            mViewRef.get().dismissLAR();
                             mViewRef.get().notifyDataChanged();
                         }
                     }

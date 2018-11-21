@@ -31,6 +31,8 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
     @BindView(R.id.srl_show_picture_refresh)
     SmartRefreshLayout srlShowPictureRefresh;
     private List<PictureBean> mPictures = new ArrayList<>();
+    //判断是否第一次加载，这样Fragment切换时就不会重新调用request方法
+    private boolean isFirstLoad = true;
     //加入Bundle获取参数
     private static Bundle mBundle;
     //单例模式
@@ -65,18 +67,20 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
         rvShowPicturesContainer.setAdapter(mPicturesRVAdapter);
 
         final String url = mBundle.getString("url");
-        presenter.rxRequestPictures(mPictures,url);
+        if (isFirstLoad) {
+            presenter.rxRequestPictures(mPictures,url);
+            srlShowPictureRefresh.autoRefresh();
+            isFirstLoad = false;
+        }
         srlShowPictureRefresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 presenter.rxRequestPictures(mPictures,url);
-                srlShowPictureRefresh.finishLoadMore();
             }
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 presenter.rxRequestPictures(mPictures,url);
-                srlShowPictureRefresh.finishRefresh();
             }
         });
     }
@@ -92,5 +96,11 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
 //        mPictures.clear();
 //        mPictures.addAll(pictures);
         mPicturesRVAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void dismissLAR() {
+        srlShowPictureRefresh.finishRefresh();
+        srlShowPictureRefresh.finishLoadMore();
     }
 }
