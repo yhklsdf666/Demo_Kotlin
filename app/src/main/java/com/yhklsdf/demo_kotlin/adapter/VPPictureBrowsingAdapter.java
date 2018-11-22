@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Picture;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -13,6 +15,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.github.chrisbanes.photoview.OnPhotoTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
@@ -57,7 +65,24 @@ public class VPPictureBrowsingAdapter extends PagerAdapter{
             view.setTag(position);
             final PhotoView imageView = view.findViewById(R.id.pv_picture_browsing_picture);
             final PhotoViewAttacher photoViewAttacher = imageView.getAttacher();
-            Glide.with(context).load(pictures.get(position).getUrl()).into(imageView);
+            //加载小图
+            RequestBuilder<Drawable> thumbnailRequest = Glide.with(context)
+                    .load(pictures.get(position).getUrl());
+            String url = pictures.get(position).getUrl().replace("__340", "_640");
+            //正式加载大图
+            GlideApp.with(context).load(url).listener(new RequestListener<Drawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                    GlideApp.with(context).load(pictures.get(position).getUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView); 执行后会重新创建Fragment？
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                    //做一些操作，例如停止刷新之类
+                    return false;
+                }
+            }).diskCacheStrategy(DiskCacheStrategy.ALL).thumbnail(thumbnailRequest).into(imageView);
             photoViewAttacher.update();
             photoViewAttacher.setOnPhotoTapListener(new OnPhotoTapListener() {
                 @Override

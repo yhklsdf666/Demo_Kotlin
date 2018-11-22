@@ -2,15 +2,20 @@ package com.yhklsdf.demo_kotlin.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.yhklsdf.demo_kotlin.R;
 import com.yhklsdf.demo_kotlin.activity.PictureBrowsingActivity;
@@ -52,7 +57,19 @@ public class RVPicturesAdapter extends RecyclerView.Adapter<RVPicturesAdapter.vi
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
-        Glide.with(mContext).load(mPicturesList.get(i).getUrl()).into(viewHolder.mImageView);
+        GlideApp.with(mContext).asBitmap().load(mPicturesList.get(i).getUrl()).listener(new RequestListener<Bitmap>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                viewHolder.mImageView.setMaxWidth(resource.getWidth());
+                viewHolder.mImageView.setMaxHeight(resource.getHeight());
+                return false;
+            }
+        }).into(viewHolder.mImageView);
 //        mImageLoader.loadImage(viewHolder.mImageView, mPicturesList.get(i));
         ViewGroup.LayoutParams params = viewHolder.mImageView.getLayoutParams();
         if (params instanceof FlexboxLayoutManager.LayoutParams) {

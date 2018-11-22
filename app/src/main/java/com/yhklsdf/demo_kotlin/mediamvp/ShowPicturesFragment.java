@@ -1,6 +1,5 @@
 package com.yhklsdf.demo_kotlin.mediamvp;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -37,9 +36,7 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
     private static Bundle mBundle;
     //单例模式
     private static ShowPicturesFragment intance;
-
-    @SuppressLint("ValidFragment")
-    private ShowPicturesFragment() { }
+    private String url;
 
     public static synchronized ShowPicturesFragment getIntance(Bundle bundle) {
         if (intance == null) {
@@ -66,7 +63,7 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
         mPicturesRVAdapter = new RVPicturesAdapter(mPictures);
         rvShowPicturesContainer.setAdapter(mPicturesRVAdapter);
 
-        final String url = mBundle.getString("url");
+        url = mBundle.getString("url");
         if (isFirstLoad) {
             presenter.rxRequestPictures(mPictures,url);
             srlShowPictureRefresh.autoRefresh();

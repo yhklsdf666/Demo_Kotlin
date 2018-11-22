@@ -33,9 +33,6 @@ public class PlayVideosFragment extends BaseFragment<PlayVideosContract.View, Pl
     private static Bundle sBundle;
     private String url;
 
-    @SuppressLint("ValidFragment")
-    private PlayVideosFragment() { }
-
     public static synchronized PlayVideosFragment getIntance(Bundle bundle) {
         if (intance == null) {
             intance = new PlayVideosFragment();
