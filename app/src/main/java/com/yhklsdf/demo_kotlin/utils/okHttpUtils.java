@@ -74,26 +74,14 @@ public class okHttpUtils {
         });
     }
 
-    public static void okHttpPostJson(String url, String json) {
-        File file = new File(Environment.getExternalStorageDirectory() + "/ic_launcher.png");
-        MultipartBody.Builder multipartBody = new MultipartBody.Builder();
-        multipartBody.addFormDataPart("filename", "png");
-        multipartBody.addFormDataPart("file", file.getName(), RequestBody.create(MediaType.parse("image/png"), file));
+    public static void okHttpPostJson(String url, String json,okhttp3.Callback callback) {
+//        File file = new File(Environment.getExternalStorageDirectory() + "/ic_launcher.png");
+//        MultipartBody.Builder multipartBody = new MultipartBody.Builder();
+//        multipartBody.addFormDataPart("filename", "png");
+//        multipartBody.addFormDataPart("file", file.getName(), RequestBody.create(MediaType.parse("image/png"), file));
 
         RequestBody responseBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), json);
         Request request = new Request.Builder().url(url).post(responseBody).build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                //服务器返回的数据
-                String responseData = response.body().string();
-            }
-        });
+        client.newCall(request).enqueue(callback);
     }
-
-
 }

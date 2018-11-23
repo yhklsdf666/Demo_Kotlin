@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.yhklsdf.demo_kotlin.bean.PictureBean;
 
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -26,6 +27,7 @@ public class ShowPicturesPresenter<V extends ShowPicturesContract.View> extends 
                     @Override
                     public void accept(String s) throws Exception {
                         if ("success".equals(s) && mViewRef.get() != null) {
+                            Collections.shuffle(pictures);
                             mViewRef.get().dismissLAR();
                             mViewRef.get().notifyDataChanged();
                         }

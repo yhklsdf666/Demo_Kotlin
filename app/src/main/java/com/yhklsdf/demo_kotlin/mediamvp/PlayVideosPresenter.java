@@ -6,6 +6,7 @@ import com.yhklsdf.demo_kotlin.base.BasePresenter;
 import com.yhklsdf.demo_kotlin.bean.PictureBean;
 import com.yhklsdf.demo_kotlin.bean.VideoBean;
 
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -26,6 +27,7 @@ public class PlayVideosPresenter<V extends PlayVideosContract.View> extends Play
                     @Override
                     public void accept(String s) throws Exception {
                         if ("success".equals(s) && mViewRef.get() != null) {
+                            Collections.shuffle(videos);
                             mViewRef.get().dismissLAR();
                             mViewRef.get().notifyDataChanged();
                         }
