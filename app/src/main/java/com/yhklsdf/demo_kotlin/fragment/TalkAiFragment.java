@@ -64,6 +64,8 @@ public class TalkAiFragment extends Fragment {
         mRVTalkAiAdapter = new RVTalkAiAdapter(msgList);
         if (msgList.isEmpty()) {
             msgList.add(new MsgBean("你好呀，我是Jenny", MsgBean.TYPE_RECEIVE));
+            msgList.add(new MsgBean("What`s your name?", MsgBean.TYPE_RECEIVE));
+            msgList.add(new MsgBean("^_^", MsgBean.TYPE_RECEIVE));
         }
         recyclerView.setAdapter(mRVTalkAiAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

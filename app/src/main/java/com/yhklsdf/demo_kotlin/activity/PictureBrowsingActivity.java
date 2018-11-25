@@ -1,21 +1,43 @@
 package com.yhklsdf.demo_kotlin.activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Picture;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.blankj.utilcode.util.FileIOUtils;
+import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.FragmentUtils;
+import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.ScreenUtils;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yhklsdf.demo_kotlin.R;
+import com.yhklsdf.demo_kotlin.adapter.GlideApp;
 import com.yhklsdf.demo_kotlin.adapter.VPPictureBrowsingAdapter;
 import com.yhklsdf.demo_kotlin.anim.DepthPageTransformer;
 import com.yhklsdf.demo_kotlin.bean.PictureBean;
+import com.yhklsdf.demo_kotlin.utils.Md5Util;
 import com.yhklsdf.demo_kotlin.view.ViewPagerFixed;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +57,7 @@ public class PictureBrowsingActivity extends AppCompatActivity {
     private List<PictureBean> mPictures;
     private int position;
     private VPPictureBrowsingAdapter mAdapter;
+    private int page;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -42,10 +65,15 @@ public class PictureBrowsingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_browsing);
         ButterKnife.bind(this);
-
+        final RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe(granted -> {
+                    if (!granted) {
+                        Toast.makeText(this, "未授予权限将无法下载图片！", Toast.LENGTH_SHORT).show();
+                    }
+                });
         Intent intent = getIntent();
-
-        mPictures =  intent.getParcelableArrayListExtra("pictures");
+        mPictures = intent.getParcelableArrayListExtra("pictures");
         position = intent.getIntExtra("position", 0);
 
         mAdapter = new VPPictureBrowsingAdapter(this, mPictures);
@@ -57,22 +85,46 @@ public class PictureBrowsingActivity extends AppCompatActivity {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
                 tvPictureBrowsingCount.setText((i + 1) + "/" + mPictures.size());
+                page = i;
             }
 
             @Override
             public void onPageSelected(int i) {
-
             }
 
             @Override
             public void onPageScrollStateChanged(int i) {
-
             }
         });
     }
 
     @OnClick(R.id.tv_picture_browsing_save)
     public void onViewClicked() {
-
+        try {
+            File dir = new File(Environment.getExternalStorageDirectory(), "/yhklsdf/image/");
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            String fileName = Md5Util.getMD5(mPictures.get(page).getUrl()) + ".jpg";
+            File file = new File(dir, fileName.substring(1, fileName.length()));
+            OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
+            GlideApp.with(this).asBitmap().load(mPictures.get(page).getUrl().replace("__340", "_640")).into(new SimpleTarget<Bitmap>() {
+                @Override
+                public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                    resource.compress(Bitmap.CompressFormat.JPEG, 100, os);
+                    Toast.makeText(PictureBrowsingActivity.this, "下载成功！", Toast.LENGTH_SHORT).show();
+                    try {
+                        os.flush();
+                        os.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            Uri uri = Uri.fromFile(file);
+            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
