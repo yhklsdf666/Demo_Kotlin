@@ -3,6 +3,7 @@ package com.yhklsdf.demo_kotlin.mediamvp;
 import android.util.Log;
 
 import com.yhklsdf.demo_kotlin.bean.PictureBean;
+import com.yhklsdf.demo_kotlin.bean.RecycleViewItemBean;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,7 +21,7 @@ public class IShowPicturesImpl implements ShowPicturesContract.model {
     private int i = 1;
 
     @Override
-    public Observable<String> rxRequestPictures(final List<PictureBean> pictures, final String url) {
+    public Observable<String> rxRequestPictures(final List<RecycleViewItemBean> pictures, final String url) {
         return Observable
                 .create(new ObservableOnSubscribe<String>() {
                     @Override
@@ -33,7 +34,7 @@ public class IShowPicturesImpl implements ShowPicturesContract.model {
                                 PictureBean picture = new PictureBean();
                                 picture.setUrl(elements.get(i).select("a > img").attr("src"));
                                 Log.d(TAG, "run: " + elements.get(i).attr("style"));
-                                pictures.add(picture);
+                                pictures.add(new RecycleViewItemBean(picture, 0));
                         }
                             emitter.onNext("success");
                         } catch (IOException e) {

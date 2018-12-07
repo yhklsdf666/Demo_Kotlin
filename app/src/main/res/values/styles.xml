@@ -6,10 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground" >@color/recycleView_background</item>
+        <item name="android:windowBackground">@color/recycleView_background</item>
     </style>
 
-    <style name="main_RadioGroupButtonStyle" >
+    <style name="main_RadioGroupButtonStyle">
         <item name="android:button">@null</item>
 
         <item name="android:gravity">center</item>
@@ -20,5 +20,5 @@
         <item name="android:textColor">@color/text_tl_selector</item>
 
     </style>
-    
+
 </resources>

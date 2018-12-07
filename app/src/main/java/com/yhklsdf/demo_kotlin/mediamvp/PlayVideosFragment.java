@@ -1,6 +1,5 @@
 package com.yhklsdf.demo_kotlin.mediamvp;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,12 +7,11 @@ import android.support.v7.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.yhklsdf.demo_kotlin.R;
-import com.yhklsdf.demo_kotlin.adapter.RVVideosAdapter;
+import com.yhklsdf.demo_kotlin.adapter.RVAdapter;
 import com.yhklsdf.demo_kotlin.base.BaseFragment;
-import com.yhklsdf.demo_kotlin.bean.VideoBean;
+import com.yhklsdf.demo_kotlin.bean.RecycleViewItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +24,9 @@ public class PlayVideosFragment extends BaseFragment<PlayVideosContract.View, Pl
     RecyclerView rvPlayVideosContainer;
     @BindView(R.id.srl_play_videos_refresh)
     SmartRefreshLayout srlPlayVideosRefresh;
-    private List<VideoBean> mVideos = new ArrayList<>();
+    private List<RecycleViewItemBean> mVideos = new ArrayList<>();
     private boolean isFirstLoad = true;
-    private RVVideosAdapter mVideosAdapter;
+    private RVAdapter mVideosAdapter;
     private static PlayVideosFragment intance;
     private static Bundle sBundle;
     private String url;
@@ -49,7 +47,7 @@ public class PlayVideosFragment extends BaseFragment<PlayVideosContract.View, Pl
     @Override
     protected void initView() {
         url = sBundle.getString("url");
-        mVideosAdapter = new RVVideosAdapter(mVideos);
+        mVideosAdapter = new RVAdapter(mVideos);
         rvPlayVideosContainer.setAdapter(mVideosAdapter);
         rvPlayVideosContainer.setLayoutManager(new LinearLayoutManager(getActivity()));
         if (isFirstLoad) {

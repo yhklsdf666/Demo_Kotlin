@@ -18,15 +18,14 @@ import android.widget.ImageButton;
 
 import com.google.gson.Gson;
 import com.yhklsdf.demo_kotlin.R;
-import com.yhklsdf.demo_kotlin.activity.MainActivity;
-import com.yhklsdf.demo_kotlin.adapter.RVTalkAiAdapter;
+import com.yhklsdf.demo_kotlin.adapter.RVAdapter;
 import com.yhklsdf.demo_kotlin.bean.MsgBean;
+import com.yhklsdf.demo_kotlin.bean.RecycleViewItemBean;
 import com.yhklsdf.demo_kotlin.gson.TuLingGet;
 import com.yhklsdf.demo_kotlin.gson.TuLingPost;
 import com.yhklsdf.demo_kotlin.utils.okHttpUtils;
 
 import java.io.IOException;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +36,11 @@ import okhttp3.Response;
 public class TalkAiFragment extends Fragment {
 
     private String url = "http://openapi.tuling123.com/openapi/api/v2";
-    private List<MsgBean> msgList = new ArrayList<>();
+    private List<RecycleViewItemBean> msgList = new ArrayList<>();
     private TuLingPost mPost = new TuLingPost();
     private TuLingGet mGet;
     private EditText editText;
-    RVTalkAiAdapter mRVTalkAiAdapter;
+    RVAdapter mRVTalkAiAdapter;
     RecyclerView recyclerView;
 
     private Handler mMyHandle = new Handler() {
@@ -61,11 +60,11 @@ public class TalkAiFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_talk_ai, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
-        mRVTalkAiAdapter = new RVTalkAiAdapter(msgList);
+        mRVTalkAiAdapter = new RVAdapter(msgList);
         if (msgList.isEmpty()) {
-            msgList.add(new MsgBean("你好呀，我是Jenny", MsgBean.TYPE_RECEIVE));
-            msgList.add(new MsgBean("What`s your name?", MsgBean.TYPE_RECEIVE));
-            msgList.add(new MsgBean("^_^", MsgBean.TYPE_RECEIVE));
+            msgList.add(new RecycleViewItemBean(new MsgBean("你好呀，我是Jenny", MsgBean.TYPE_RECEIVE),2));
+            msgList.add(new RecycleViewItemBean(new MsgBean("What`s your name?", MsgBean.TYPE_RECEIVE),2));
+            msgList.add(new RecycleViewItemBean(new MsgBean("^_^", MsgBean.TYPE_RECEIVE),2));
         }
         recyclerView.setAdapter(mRVTalkAiAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -85,7 +84,7 @@ public class TalkAiFragment extends Fragment {
                 String msg = editText.getText().toString();
                 if (!"".equals(msg)) {
                     MsgBean msgBean = new MsgBean(msg, MsgBean.TYPE_SENT);
-                    msgList.add(msgBean);
+                    msgList.add(new RecycleViewItemBean(msgBean, 2));
                     notifyNewMessage();
                     editText.setText("");
                     mPost.setText(msg);
@@ -111,7 +110,7 @@ public class TalkAiFragment extends Fragment {
                 String jsonGet = response.body().string();
                 mGet = new Gson().fromJson(jsonGet, TuLingGet.class);
                 MsgBean newMsg = new MsgBean(mGet.getResults().get(0).getValues().getText(), MsgBean.TYPE_RECEIVE);
-                msgList.add(newMsg);
+                msgList.add(new RecycleViewItemBean(newMsg,2));
                 mMyHandle.sendEmptyMessage(0);
             }
         });

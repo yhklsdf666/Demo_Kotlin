@@ -13,9 +13,9 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.yhklsdf.demo_kotlin.R;
-import com.yhklsdf.demo_kotlin.adapter.RVPicturesAdapter;
+import com.yhklsdf.demo_kotlin.adapter.RVAdapter;
 import com.yhklsdf.demo_kotlin.base.BaseFragment;
-import com.yhklsdf.demo_kotlin.bean.PictureBean;
+import com.yhklsdf.demo_kotlin.bean.RecycleViewItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +24,12 @@ import butterknife.BindView;
 
 public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View, ShowPicturesPresenter<ShowPicturesContract.View>> implements ShowPicturesContract.View {
 
-    RVPicturesAdapter mPicturesRVAdapter;
+    RVAdapter mPicturesRVAdapter;
     @BindView(R.id.rv_show_pictures_container)
     RecyclerView rvShowPicturesContainer;
     @BindView(R.id.srl_show_picture_refresh)
     SmartRefreshLayout srlShowPictureRefresh;
-    private List<PictureBean> mPictures = new ArrayList<>();
+    private List<RecycleViewItemBean> mPictures = new ArrayList<>();
     //判断是否第一次加载，这样Fragment切换时就不会重新调用request方法
     private boolean isFirstLoad = true;
     //加入Bundle获取参数
@@ -60,7 +60,7 @@ public class ShowPicturesFragment extends BaseFragment<ShowPicturesContract.View
         manager.setJustifyContent(JustifyContent.SPACE_AROUND);
 
         rvShowPicturesContainer.setLayoutManager(manager);
-        mPicturesRVAdapter = new RVPicturesAdapter(mPictures);
+        mPicturesRVAdapter = new RVAdapter(mPictures);
         rvShowPicturesContainer.setAdapter(mPicturesRVAdapter);
 
         url = mBundle.getString("url");

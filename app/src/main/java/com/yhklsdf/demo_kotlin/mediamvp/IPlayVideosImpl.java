@@ -1,8 +1,6 @@
 package com.yhklsdf.demo_kotlin.mediamvp;
 
-import android.util.Log;
-
-import com.yhklsdf.demo_kotlin.bean.PictureBean;
+import com.yhklsdf.demo_kotlin.bean.RecycleViewItemBean;
 import com.yhklsdf.demo_kotlin.bean.VideoBean;
 
 import org.jsoup.Jsoup;
@@ -21,7 +19,7 @@ public class IPlayVideosImpl implements PlayVideosContract.Model{
     private int i = 1;
 
     @Override
-    public Observable<String> rxRequestVideos(final String url, final List<VideoBean> videos) {
+    public Observable<String> rxRequestVideos(final String url, final List<RecycleViewItemBean> videos) {
         return Observable
                 .create(new ObservableOnSubscribe<String>() {
                     @Override
@@ -34,7 +32,7 @@ public class IPlayVideosImpl implements PlayVideosContract.Model{
                                 VideoBean video = new VideoBean();
                                 video.setVideoUrl("https:" + element.select("a > div").attr("data-mp4"));
                                 video.setPlaceholderPicture(element.select("a > div > img").attr("src"));
-                               videos.add(video);
+                                videos.add(new RecycleViewItemBean(video, 1));
                             }
                             emitter.onNext("success");
                         } catch (IOException e) {

@@ -3,6 +3,7 @@ package com.yhklsdf.demo_kotlin.mediamvp;
 import android.annotation.SuppressLint;
 
 import com.yhklsdf.demo_kotlin.bean.PictureBean;
+import com.yhklsdf.demo_kotlin.bean.RecycleViewItemBean;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +20,7 @@ public class ShowPicturesPresenter<V extends ShowPicturesContract.View> extends 
 
     @SuppressLint("CheckResult")
     @Override
-    void rxRequestPictures(List<PictureBean> pictures, String url) {
+    void rxRequestPictures(List<RecycleViewItemBean> pictures, String url) {
         mShowPicturesModel.rxRequestPictures(pictures,url)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

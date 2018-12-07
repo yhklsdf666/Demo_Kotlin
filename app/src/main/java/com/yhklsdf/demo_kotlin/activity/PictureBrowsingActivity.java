@@ -4,7 +4,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Picture;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,11 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.blankj.utilcode.util.FileIOUtils;
-import com.blankj.utilcode.util.FileUtils;
-import com.blankj.utilcode.util.FragmentUtils;
-import com.blankj.utilcode.util.ImageUtils;
-import com.blankj.utilcode.util.ScreenUtils;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -33,11 +27,9 @@ import com.yhklsdf.demo_kotlin.view.ViewPagerFixed;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +37,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * @author Thinkad
+ */
 public class PictureBrowsingActivity extends AppCompatActivity {
 
     @BindView(R.id.vp_picture_browsing)
@@ -54,12 +49,12 @@ public class PictureBrowsingActivity extends AppCompatActivity {
     @BindView(R.id.tv_picture_browsing_save)
     TextView tvPictureBrowsingSave;
 
-    private List<PictureBean> mPictures;
+    private List<PictureBean> mPictures = new ArrayList<>();
     private int position;
     private VPPictureBrowsingAdapter mAdapter;
     private int page;
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "CheckResult"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,9 +67,11 @@ public class PictureBrowsingActivity extends AppCompatActivity {
                         Toast.makeText(this, "未授予权限将无法下载图片！", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
         Intent intent = getIntent();
-        mPictures = intent.getParcelableArrayListExtra("pictures");
         position = intent.getIntExtra("position", 0);
+        mPictures = intent.getParcelableArrayListExtra("pictures");
 
         mAdapter = new VPPictureBrowsingAdapter(this, mPictures);
         vpPictureBrowsing.setAdapter(mAdapter);

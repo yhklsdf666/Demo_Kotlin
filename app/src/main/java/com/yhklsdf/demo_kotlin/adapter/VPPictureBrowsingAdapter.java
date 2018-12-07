@@ -29,7 +29,6 @@ import com.yhklsdf.demo_kotlin.bean.PictureBean;
 
 import java.util.List;
 
-
 public class VPPictureBrowsingAdapter extends PagerAdapter{
 
     private Context context;

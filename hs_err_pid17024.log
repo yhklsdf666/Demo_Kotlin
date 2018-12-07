@@ -1,0 +1,355 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32744 bytes for ChunkPool::allocate
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:273), pid=17024, tid=0x00000000000063ec
+#
+# JRE version: OpenJDK Runtime Environment (8.0_152-b02) (build 1.8.0_152-release-1024-b02)
+# Java VM: OpenJDK 64-Bit Server VM (25.152-b02 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000001acf4800):  JavaThread "RMI TCP Connection(2)-127.0.0.1" daemon [_thread_in_vm, id=25580, stack(0x000000001bc00000,0x000000001bd00000)]
+
+Stack: [0x000000001bc00000,0x000000001bd00000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  sun.reflect.generics.factory.CoreReflectionFactory.makeTypeVariable(Ljava/lang/String;[Lsun/reflect/generics/tree/FieldTypeSignature;)Ljava/lang/reflect/TypeVariable;+7
+j  sun.reflect.generics.visitor.Reifier.visitFormalTypeParameter(Lsun/reflect/generics/tree/FormalTypeParameter;)V+13
+j  sun.reflect.generics.tree.FormalTypeParameter.accept(Lsun/reflect/generics/visitor/TypeTreeVisitor;)V+2
+j  sun.reflect.generics.repository.GenericDeclRepository.getTypeParameters()[Ljava/lang/reflect/TypeVariable;+47
+j  java.lang.Class.getTypeParameters()[Ljava/lang/reflect/TypeVariable;+10
+j  kotlin.reflect.jvm.internal.structure.ReflectJavaClass.getTypeParameters()Ljava/util/List;+4
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.LazyJavaTypeParameterResolver.<init>(Lkotlin/reflect/jvm/internal/impl/load/java/lazy/LazyJavaResolverContext;Lkotlin/reflect/jvm/internal/impl/descriptors/DeclarationDescriptor;Lkotlin/reflect/jvm/internal/impl/load/java/structure/JavaTypeParameterListOwner;I)V+40
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.ContextKt.child(Lkotlin/reflect/jvm/internal/impl/load/java/lazy/LazyJavaResolverContext;Lkotlin/reflect/jvm/internal/impl/descriptors/DeclarationDescriptor;Lkotlin/reflect/jvm/internal/impl/load/java/structure/JavaTypeParameterListOwner;ILkotlin/Lazy;)Lkotlin/reflect/jvm/internal/impl/load/java/lazy/LazyJavaResolverContext;+26
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.ContextKt.childForClassOrPackage(Lkotlin/reflect/jvm/internal/impl/load/java/lazy/LazyJavaResolverContext;Lkotlin/reflect/jvm/internal/impl/descriptors/ClassOrPackageFragmentDescriptor;Lkotlin/reflect/jvm/internal/impl/load/java/structure/JavaTypeParameterListOwner;I)Lkotlin/reflect/jvm/internal/impl/load/java/lazy/LazyJavaResolverContext;+37
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.ContextKt.childForClassOrPackage$default(Lkotlin/reflect/jvm/internal/impl/load/java/lazy/LazyJavaResolverContext;Lkotlin/reflect/jvm/internal/impl/descriptors/ClassOrPackageFragmentDescriptor;Lkotlin/reflect/jvm/internal/impl/load/java/structure/JavaTypeParameterListOwner;IILjava/lang/Object;)Lkotlin/reflect/jvm/internal/impl/load/java/lazy/LazyJavaResolverContext;+25
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.LazyJavaClassDescriptor.<init>(Lkotlin/reflect/jvm/internal/impl/load/java/lazy/LazyJavaResolverContext;Lkotlin/reflect/jvm/internal/impl/descriptors/DeclarationDescriptor;Lkotlin/reflect/jvm/internal/impl/load/java/structure/JavaClass;Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;)V+80
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.LazyJavaClassDescriptor.<init>(Lkotlin/reflect/jvm/internal/impl/load/java/lazy/LazyJavaResolverContext;Lkotlin/reflect/jvm/internal/impl/descriptors/DeclarationDescriptor;Lkotlin/reflect/jvm/internal/impl/load/java/structure/JavaClass;Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;ILkotlin/jvm/internal/DefaultConstructorMarker;)V+20
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.LazyJavaPackageScope$classes$1.invoke(Lkotlin/reflect/jvm/internal/impl/load/java/lazy/descriptors/LazyJavaPackageScope$FindClassRequest;)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;+415
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.LazyJavaPackageScope$classes$1.invoke(Ljava/lang/Object;)Ljava/lang/Object;+5
+J 1103 C1 kotlin.reflect.jvm.internal.impl.storage.LockBasedStorageManager$MapBasedMemoizedFunction.invoke(Ljava/lang/Object;)Ljava/lang/Object; (281 bytes) @ 0x00000000055359d4 [0x00000000055353e0+0x5f4]
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.LazyJavaPackageScope.findClassifier(Lkotlin/reflect/jvm/internal/impl/name/Name;Lkotlin/reflect/jvm/internal/impl/load/java/structure/JavaClass;)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;+58
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.LazyJavaPackageScope.getContributedClassifier(Lkotlin/reflect/jvm/internal/impl/name/Name;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;+15
+j  kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.JvmPackageScope.getContributedClassifier(Lkotlin/reflect/jvm/internal/impl/name/Name;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassifierDescriptor;+24
+j  kotlin.reflect.jvm.internal.impl.resolve.scopes.ChainedMemberScope.getContributedClassifier(Lkotlin/reflect/jvm/internal/impl/name/Name;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassifierDescriptor;+61
+j  kotlin.reflect.jvm.internal.impl.resolve.scopes.AbstractScopeAdapter.getContributedClassifier(Lkotlin/reflect/jvm/internal/impl/name/Name;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassifierDescriptor;+18
+j  kotlin.reflect.jvm.internal.impl.descriptors.FindClassInModuleKt.findClassAcrossModuleDependencies(Lkotlin/reflect/jvm/internal/impl/descriptors/ModuleDescriptor;Lkotlin/reflect/jvm/internal/impl/name/ClassId;)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;+68
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.TypeDeserializer.computeClassDescriptor(I)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;+42
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.TypeDeserializer.access$computeClassDescriptor(Lkotlin/reflect/jvm/internal/impl/serialization/deserialization/TypeDeserializer;I)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;+2
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.TypeDeserializer$classDescriptors$1.invoke(I)Lkotlin/reflect/jvm/internal/impl/descriptors/ClassDescriptor;+5
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.TypeDeserializer$classDescriptors$1.invoke(Ljava/lang/Object;)Ljava/lang/Object;+8
+J 1103 C1 kotlin.reflect.jvm.internal.impl.storage.LockBasedStorageManager$MapBasedMemoizedFunction.invoke(Ljava/lang/Object;)Ljava/lang/Object; (281 bytes) @ 0x00000000055359d4 [0x00000000055353e0+0x5f4]
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.TypeDeserializer.typeConstructor(Lkotlin/reflect/jvm/internal/impl/metadata/ProtoBuf$Type;)Lkotlin/reflect/jvm/internal/impl/types/TypeConstructor;+28
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.TypeDeserializer.simpleType(Lkotlin/reflect/jvm/internal/impl/metadata/ProtoBuf$Type;Lkotlin/reflect/jvm/internal/impl/descriptors/annotations/Annotations;)Lkotlin/reflect/jvm/internal/impl/types/SimpleType;+58
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.TypeDeserializer.type(Lkotlin/reflect/jvm/internal/impl/metadata/ProtoBuf$Type;Lkotlin/reflect/jvm/internal/impl/descriptors/annotations/Annotations;)Lkotlin/reflect/jvm/internal/impl/types/KotlinType;+94
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.MemberDeserializer.loadFunction(Lkotlin/reflect/jvm/internal/impl/metadata/ProtoBuf$Function;)Lkotlin/reflect/jvm/internal/impl/descriptors/SimpleFunctionDescriptor;+221
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope.computeFunctions(Lkotlin/reflect/jvm/internal/impl/name/Name;)Ljava/util/Collection;+169
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope.access$computeFunctions(Lkotlin/reflect/jvm/internal/impl/serialization/deserialization/descriptors/DeserializedMemberScope;Lkotlin/reflect/jvm/internal/impl/name/Name;)Ljava/util/Collection;+2
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope$functions$1.invoke(Lkotlin/reflect/jvm/internal/impl/name/Name;)Ljava/util/Collection;+11
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope$functions$1.invoke(Ljava/lang/Object;)Ljava/lang/Object;+5
+J 1103 C1 kotlin.reflect.jvm.internal.impl.storage.LockBasedStorageManager$MapBasedMemoizedFunction.invoke(Ljava/lang/Object;)Ljava/lang/Object; (281 bytes) @ 0x00000000055359d4 [0x00000000055353e0+0x5f4]
+J 1201 C1 kotlin.reflect.jvm.internal.impl.storage.LockBasedStorageManager$MapBasedMemoizedFunctionToNotNull.invoke(Ljava/lang/Object;)Ljava/lang/Object; (48 bytes) @ 0x0000000005559f84 [0x0000000005559f00+0x84]
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope.getContributedFunctions(Lkotlin/reflect/jvm/internal/impl/name/Name;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)Ljava/util/Collection;+37
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedClassDescriptor$DeserializedClassMemberScope.getContributedFunctions(Lkotlin/reflect/jvm/internal/impl/name/Name;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)Ljava/util/Collection;+21
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedClassDescriptor$DeserializedClassMemberScope.computeNonDeclaredFunctions(Lkotlin/reflect/jvm/internal/impl/name/Name;Ljava/util/Collection;)V+74
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope.computeFunctions(Lkotlin/reflect/jvm/internal/impl/name/Name;)Ljava/util/Collection;+205
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope.access$computeFunctions(Lkotlin/reflect/jvm/internal/impl/serialization/deserialization/descriptors/DeserializedMemberScope;Lkotlin/reflect/jvm/internal/impl/name/Name;)Ljava/util/Collection;+2
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope$functions$1.invoke(Lkotlin/reflect/jvm/internal/impl/name/Name;)Ljava/util/Collection;+11
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope$functions$1.invoke(Ljava/lang/Object;)Ljava/lang/Object;+5
+J 1103 C1 kotlin.reflect.jvm.internal.impl.storage.LockBasedStorageManager$MapBasedMemoizedFunction.invoke(Ljava/lang/Object;)Ljava/lang/Object; (281 bytes) @ 0x00000000055359d4 [0x00000000055353e0+0x5f4]
+J 1201 C1 kotlin.reflect.jvm.internal.impl.storage.LockBasedStorageManager$MapBasedMemoizedFunctionToNotNull.invoke(Ljava/lang/Object;)Ljava/lang/Object; (48 bytes) @ 0x0000000005559f84 [0x0000000005559f00+0x84]
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope.getContributedFunctions(Lkotlin/reflect/jvm/internal/impl/name/Name;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)Ljava/util/Collection;+37
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedClassDescriptor$DeserializedClassMemberScope.getContributedFunctions(Lkotlin/reflect/jvm/internal/impl/name/Name;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)Ljava/util/Collection;+21
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope.addFunctionsAndProperties(Ljava/util/Collection;Lkotlin/reflect/jvm/internal/impl/resolve/scopes/DescriptorKindFilter;Lkotlin/jvm/functions/Function1;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)V+241
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedMemberScope.computeDescriptors(Lkotlin/reflect/jvm/internal/impl/resolve/scopes/DescriptorKindFilter;Lkotlin/jvm/functions/Function1;Lkotlin/reflect/jvm/internal/impl/incremental/components/LookupLocation;)Ljava/util/Collection;+60
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedClassDescriptor$DeserializedClassMemberScope$allDescriptors$1.invoke()Ljava/util/Collection;+19
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedClassDescriptor$DeserializedClassMemberScope$allDescriptors$1.invoke()Ljava/lang/Object;+1
+j  kotlin.reflect.jvm.internal.impl.storage.LockBasedStorageManager$LockBasedLazyValue.invoke()Ljava/lang/Object;+156
+j  kotlin.reflect.jvm.internal.impl.storage.LockBasedStorageManager$LockBasedNotNullLazyValue.invoke()Ljava/lang/Object;+1
+j  kotlin.reflect.jvm.internal.impl.serialization.deserialization.descriptors.DeserializedClassDescriptor$DeserializedClassMemberScope.getContributedDescriptors(Lkotlin/reflect/jvm/internal/impl/resolve/scopes/DescriptorKindFilter;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;+16
+j  kotlin.reflect.jvm.internal.impl.resolve.scopes.ResolutionScope$DefaultImpls.getContributedDescriptors$default(Lkotlin/reflect/jvm/internal/impl/resolve/scopes/ResolutionScope;Lkotlin/reflect/jvm/internal/impl/resolve/scopes/DescriptorKindFilter;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/util/Collection;+41
+j  kotlin.reflect.jvm.internal.KDeclarationContainerImpl.getMembers(Lkotlin/reflect/jvm/internal/impl/resolve/scopes/MemberScope;Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl$MemberBelonginess;)Ljava/util/Collection;+26
+j  kotlin.reflect.jvm.internal.KClassImpl$Data$declaredNonStaticMembers$2.invoke()Ljava/util/Collection;+20
+j  kotlin.reflect.jvm.internal.KClassImpl$Data$declaredNonStaticMembers$2.invoke()Ljava/lang/Object;+1
+j  kotlin.reflect.jvm.internal.ReflectProperties$LazySoftVal.invoke()Ljava/lang/Object;+28
+j  kotlin.reflect.jvm.internal.ReflectProperties$Val.getValue(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+1
+j  kotlin.reflect.jvm.internal.KClassImpl$Data.getDeclaredNonStaticMembers()Ljava/util/Collection;+11
+j  kotlin.reflect.jvm.internal.KClassImpl$Data$allNonStaticMembers$2.invoke()Ljava/util/List;+4
+j  kotlin.reflect.jvm.internal.KClassImpl$Data$allNonStaticMembers$2.invoke()Ljava/lang/Object;+1
+j  kotlin.reflect.jvm.internal.ReflectProperties$LazySoftVal.invoke()Ljava/lang/Object;+28
+j  kotlin.reflect.jvm.internal.ReflectProperties$Val.getValue(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+1
+j  kotlin.reflect.jvm.internal.KClassImpl$Data.getAllNonStaticMembers()Ljava/util/Collection;+11
+j  kotlin.reflect.full.KClasses.getMemberProperties(Lkotlin/reflect/KClass;)Ljava/util/Collection;+19
+j  org.jetbrains.kotlin.cli.common.arguments.ParseCommandLineArgumentsKt.parsePreprocessedCommandLineArguments(Ljava/util/List;Lorg/jetbrains/kotlin/cli/common/arguments/CommonToolArguments;)V+7
+j  org.jetbrains.kotlin.cli.common.arguments.ParseCommandLineArgumentsKt.parseCommandLineArguments(Ljava/util/List;Lorg/jetbrains/kotlin/cli/common/arguments/CommonToolArguments;)V+23
+j  org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(I[Ljava/lang/String;Lorg/jetbrains/kotlin/daemon/common/CompilationOptions;Lorg/jetbrains/kotlin/daemon/common/CompilerServicesFacadeBase;Lorg/jetbrains/kotlin/daemon/common/CompilationResults;)Lorg/jetbrains/kotlin/daemon/common/CompileService$CallResult;+412
+v  ~StubRoutines::call_stub
+j  sun.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0
+j  sun.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+100
+j  sun.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+56
+j  sun.rmi.server.UnicastServerRef.dispatch(Ljava/rmi/Remote;Ljava/rmi/server/RemoteCall;)V+209
+j  sun.rmi.transport.Transport$1.run()Ljava/lang/Void;+23
+j  sun.rmi.transport.Transport$1.run()Ljava/lang/Object;+1
+v  ~StubRoutines::call_stub
+J 170  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x000000000530c426 [0x000000000530c3c0+0x66]
+j  sun.rmi.transport.Transport.serviceCall(Ljava/rmi/server/RemoteCall;)Z+157
+j  sun.rmi.transport.tcp.TCPTransport.handleMessages(Lsun/rmi/transport/Connection;Z)V+185
+j  sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0()V+680
+j  sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0()Ljava/lang/Void;+1
+j  sun.rmi.transport.tcp.TCPTransport$ConnectionHandler$$Lambda$5.run()Ljava/lang/Object;+4
+v  ~StubRoutines::call_stub
+j  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;)Ljava/lang/Object;+0
+j  sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run()V+58
+j  java.util.concurrent.ThreadPoolExecutor.runWorker(Ljava/util/concurrent/ThreadPoolExecutor$Worker;)V+95
+j  java.util.concurrent.ThreadPoolExecutor$Worker.run()V+5
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000001ad03000 JavaThread "RMI RenewClean-[localhost:6100,org.jetbrains.kotlin.daemon.common.LoopbackNetworkInterface$ClientLoopbackSocketFactory@12814a02]" daemon [_thread_blocked, id=12524, stack(0x000000001bd00000,0x000000001be00000)]
+=>0x000000001acf4800 JavaThread "RMI TCP Connection(2)-127.0.0.1" daemon [_thread_in_vm, id=25580, stack(0x000000001bc00000,0x000000001bd00000)]
+  0x000000001acf1000 JavaThread "RMI Scheduler(0)" daemon [_thread_blocked, id=34384, stack(0x000000001bb00000,0x000000001bc00000)]
+  0x000000001ace8000 JavaThread "RMI TCP Connection(1)-127.0.0.1" daemon [_thread_in_native, id=20432, stack(0x000000001ba00000,0x000000001bb00000)]
+  0x00000000050a2800 JavaThread "DestroyJavaVM" [_thread_blocked, id=14208, stack(0x0000000004f60000,0x0000000005060000)]
+  0x000000001ac94800 JavaThread "GC Daemon" daemon [_thread_blocked, id=18368, stack(0x000000001b860000,0x000000001b960000)]
+  0x000000001ac9b800 JavaThread "RMI Reaper" [_thread_blocked, id=21092, stack(0x000000001b560000,0x000000001b660000)]
+  0x000000001abdb800 JavaThread "Timer-0" daemon [_thread_blocked, id=3904, stack(0x000000001b360000,0x000000001b460000)]
+  0x000000001acad800 JavaThread "RMI TCP Accept-17574" daemon [_thread_in_native, id=34104, stack(0x000000001b260000,0x000000001b360000)]
+  0x0000000019fe3800 JavaThread "Service Thread" daemon [_thread_blocked, id=19028, stack(0x000000001a860000,0x000000001a960000)]
+  0x0000000019f71800 JavaThread "C1 CompilerThread2" daemon [_thread_in_native, id=18800, stack(0x000000001a760000,0x000000001a860000)]
+  0x0000000019f6a000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=812, stack(0x000000001a660000,0x000000001a760000)]
+  0x0000000018b6c800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=14260, stack(0x000000001a560000,0x000000001a660000)]
+  0x0000000018b1e800 JavaThread "Attach Listener" daemon [_thread_blocked, id=33880, stack(0x000000001a460000,0x000000001a560000)]
+  0x0000000019f68800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=34284, stack(0x000000001a360000,0x000000001a460000)]
+  0x000000000519c000 JavaThread "Finalizer" daemon [_thread_blocked, id=34296, stack(0x0000000019d60000,0x0000000019e60000)]
+  0x0000000005193000 JavaThread "Reference Handler" daemon [_thread_blocked, id=68, stack(0x0000000019c60000,0x0000000019d60000)]
+
+Other Threads:
+  0x0000000018ad5000 VMThread [stack: 0x0000000019b60000,0x0000000019c60000] [id=28512]
+  0x0000000019fe4800 WatcherThread [stack: 0x000000001a960000,0x000000001aa60000] [id=23424]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 38400K, used 31109K [0x00000000e0000000, 0x00000000e2a80000, 0x0000000100000000)
+  eden space 33280K, 93% used [0x00000000e0000000,0x00000000e1e614d8,0x00000000e2080000)
+  from space 5120K, 0% used [0x00000000e2080000,0x00000000e2080000,0x00000000e2580000)
+  to   space 5120K, 0% used [0x00000000e2580000,0x00000000e2580000,0x00000000e2a80000)
+ ParOldGen       total 87552K, used 3139K [0x00000000a0000000, 0x00000000a5580000, 0x00000000e0000000)
+  object space 87552K, 3% used [0x00000000a0000000,0x00000000a0310f08,0x00000000a5580000)
+ Metaspace       used 14264K, capacity 14536K, committed 14848K, reserved 1064960K
+  class space    used 1643K, capacity 1730K, committed 1792K, reserved 1048576K
+
+Card table byte_map: [0x0000000014560000,0x0000000014870000] byte_map_base: 0x0000000014060000
+
+Marking Bits: (ParMarkBitMap*) 0x000000006e424970
+ Begin Bits: [0x0000000014e70000, 0x0000000016670000)
+ End Bits:   [0x0000000016670000, 0x0000000017e70000)
+
+Polling page: 0x0000000002f20000
+
+CodeCache: size=245760Kb used=3964Kb max_used=3975Kb free=241795Kb
+ bounds [0x00000000051a0000, 0x0000000005590000, 0x00000000141a0000]
+ total_blobs=1678 nmethods=1282 adapters=309
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 2.316 Thread 0x0000000019f71800 nmethod 1277 0x0000000005582050 code [0x0000000005582220, 0x00000000055827b8]
+Event: 2.316 Thread 0x0000000018b6c800 1279       4       kotlin.reflect.jvm.internal.impl.protobuf.GeneratedMessageLite::<init> (5 bytes)
+Event: 2.316 Thread 0x0000000019f6a000 1280       4       kotlin.reflect.jvm.internal.impl.protobuf.CodedInputStream::checkLastTagWas (13 bytes)
+Event: 2.316 Thread 0x0000000018b6c800 nmethod 1279 0x000000000557e490 code [0x000000000557e5c0, 0x000000000557e618]
+Event: 2.316 Thread 0x0000000019f71800 1281   !   3       kotlin.reflect.jvm.internal.impl.metadata.ProtoBuf$Class::<init> (1949 bytes)
+Event: 2.316 Thread 0x0000000018b6c800 1282  s    4       kotlin.reflect.jvm.internal.impl.protobuf.ByteString$Output::toByteString (12 bytes)
+Event: 2.317 Thread 0x0000000019f6a000 nmethod 1280 0x0000000005580690 code [0x00000000055807c0, 0x0000000005580838]
+Event: 2.317 Thread 0x0000000019f6a000 1283       4       kotlin.reflect.jvm.internal.impl.protobuf.ByteString$Output::flushLastBuffer (96 bytes)
+Event: 2.317 Thread 0x0000000019f6a000 nmethod 1283 0x000000000557c850 code [0x000000000557c980, 0x000000000557ca38]
+Event: 2.319 Thread 0x0000000018b6c800 nmethod 1282 0x0000000005583a50 code [0x0000000005583ba0, 0x0000000005583e38]
+
+GC Heap History (4 events):
+Event: 1.174 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 38400K, used 17612K [0x00000000e0000000, 0x00000000e2a80000, 0x0000000100000000)
+  eden space 33280K, 52% used [0x00000000e0000000,0x00000000e1133150,0x00000000e2080000)
+  from space 5120K, 0% used [0x00000000e2580000,0x00000000e2580000,0x00000000e2a80000)
+  to   space 5120K, 0% used [0x00000000e2080000,0x00000000e2080000,0x00000000e2580000)
+ ParOldGen       total 87552K, used 0K [0x00000000a0000000, 0x00000000a5580000, 0x00000000e0000000)
+  object space 87552K, 0% used [0x00000000a0000000,0x00000000a0000000,0x00000000a5580000)
+ Metaspace       used 9295K, capacity 9484K, committed 9600K, reserved 1058816K
+  class space    used 993K, capacity 1056K, committed 1152K, reserved 1048576K
+Event: 1.179 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 38400K, used 3346K [0x00000000e0000000, 0x00000000e2a80000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000e2080000)
+  from space 5120K, 65% used [0x00000000e2080000,0x00000000e23c48f0,0x00000000e2580000)
+  to   space 5120K, 0% used [0x00000000e2580000,0x00000000e2580000,0x00000000e2a80000)
+ ParOldGen       total 87552K, used 16K [0x00000000a0000000, 0x00000000a5580000, 0x00000000e0000000)
+  object space 87552K, 0% used [0x00000000a0000000,0x00000000a0004000,0x00000000a5580000)
+ Metaspace       used 9295K, capacity 9484K, committed 9600K, reserved 1058816K
+  class space    used 993K, capacity 1056K, committed 1152K, reserved 1048576K
+}
+Event: 1.179 GC heap before
+{Heap before GC invocations=2 (full 1):
+ PSYoungGen      total 38400K, used 3346K [0x00000000e0000000, 0x00000000e2a80000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000e2080000)
+  from space 5120K, 65% used [0x00000000e2080000,0x00000000e23c48f0,0x00000000e2580000)
+  to   space 5120K, 0% used [0x00000000e2580000,0x00000000e2580000,0x00000000e2a80000)
+ ParOldGen       total 87552K, used 16K [0x00000000a0000000, 0x00000000a5580000, 0x00000000e0000000)
+  object space 87552K, 0% used [0x00000000a0000000,0x00000000a0004000,0x00000000a5580000)
+ Metaspace       used 9295K, capacity 9484K, committed 9600K, reserved 1058816K
+  class space    used 993K, capacity 1056K, committed 1152K, reserved 1048576K
+Event: 1.191 GC heap after
+Heap after GC invocations=2 (full 1):
+ PSYoungGen      total 38400K, used 0K [0x00000000e0000000, 0x00000000e2a80000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000e2080000)
+  from space 5120K, 0% used [0x00000000e2080000,0x00000000e2080000,0x00000000e2580000)
+  to   space 5120K, 0% used [0x00000000e2580000,0x00000000e2580000,0x00000000e2a80000)
+ ParOldGen       total 87552K, used 3139K [0x00000000a0000000, 0x00000000a5580000, 0x00000000e0000000)
+  object space 87552K, 3% used [0x00000000a0000000,0x00000000a0310f08,0x00000000a5580000)
+ Metaspace       used 9295K, capacity 9484K, committed 9600K, reserved 1058816K
+  class space    used 993K, capacity 1056K, committed 1152K, reserved 1048576K
+}
+
+Deoptimization events (10 events):
+Event: 1.742 Thread 0x000000001ac8c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000005405cbc method=java.security.DigestInputStream.read([BII)I @ 22
+Event: 1.743 Thread 0x000000001ac8c000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000005408bb4 method=sun.security.provider.DigestBase.engineUpdate([BII)V @ 128
+Event: 1.785 Thread 0x000000001ac8c000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000540c528 method=java.security.DigestInputStream.read([BII)I @ 22
+Event: 1.801 Thread 0x000000001ac8c000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000005408bb4 method=sun.security.provider.DigestBase.engineUpdate([BII)V @ 128
+Event: 2.064 Thread 0x000000001acf4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000054958f4 method=kotlin.reflect.jvm.internal.impl.protobuf.CodedInputStream.tryRefillBuffer(I)Z @ 175
+Event: 2.070 Thread 0x000000001acf4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000054958f4 method=kotlin.reflect.jvm.internal.impl.protobuf.CodedInputStream.tryRefillBuffer(I)Z @ 175
+Event: 2.070 Thread 0x000000001acf4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000054958f4 method=kotlin.reflect.jvm.internal.impl.protobuf.CodedInputStream.tryRefillBuffer(I)Z @ 175
+Event: 2.071 Thread 0x000000001acf4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000054c4a54 method=kotlin.reflect.jvm.internal.impl.protobuf.CodedInputStream.readRawVarint32()I @ 69
+Event: 2.074 Thread 0x000000001acf4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000005485b40 method=kotlin.reflect.jvm.internal.impl.protobuf.CodedInputStream.readRawVarint32()I @ 69
+Event: 2.077 Thread 0x000000001acf4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000054958f4 method=kotlin.reflect.jvm.internal.impl.protobuf.CodedInputStream.tryRefillBuffer(I)Z @ 175
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 1.133 Thread 0x00000000050a2800 Exception <a 'java/io/IOException'> (0x00000000e0f539a0) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jni.cpp, line 709]
+Event: 1.247 Thread 0x000000001ace8000 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e00e1d10) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jni.cpp, line 1613]
+Event: 1.312 Thread 0x000000001acf4800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e0177740) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jni.cpp, line 1613]
+Event: 1.329 Thread 0x000000001acf4800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e018ce38) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jni.cpp, line 1613]
+Event: 1.329 Thread 0x000000001acf4800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e018eaf0) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jni.cpp, line 1613]
+Event: 1.330 Thread 0x000000001acf4800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e0199420) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jni.cpp, line 1613]
+Event: 1.347 Thread 0x000000001acf4800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e01c43c8) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jni.cpp, line 1613]
+Event: 1.478 Thread 0x000000001acf4800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e0387b28) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\prims\jni.cpp, line 1613]
+Event: 2.131 Thread 0x000000001acf4800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000e17fb010) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 2.330 Thread 0x000000001acf4800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000e1e3f110) thrown at [D:\src\AOSP-openjdk-cygwin\jdk8u\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+
+Events (10 events):
+Event: 2.327 loading class org/jetbrains/kotlin/config/LanguageVersion
+Event: 2.327 loading class org/jetbrains/kotlin/config/LanguageVersion done
+Event: 2.329 loading class kotlin/reflect/jvm/internal/impl/serialization/deserialization/MemberDeserializer$getReceiverParameterAnnotations$1
+Event: 2.329 loading class kotlin/reflect/jvm/internal/impl/serialization/deserialization/MemberDeserializer$getReceiverParameterAnnotations$1 done
+Event: 2.330 loading class sun/reflect/generics/tree/TypeVariableSignature
+Event: 2.330 loading class sun/reflect/generics/tree/TypeVariableSignature done
+Event: 2.330 loading class sun/reflect/generics/reflectiveObjects/TypeVariableImpl
+Event: 2.331 loading class sun/reflect/generics/reflectiveObjects/LazyReflectiveObjectGenerator
+Event: 2.331 loading class sun/reflect/generics/reflectiveObjects/LazyReflectiveObjectGenerator done
+Event: 2.331 loading class sun/reflect/generics/reflectiveObjects/TypeVariableImpl done
+
+
+Dynamic libraries:
+0x00007ff641440000 - 0x00007ff641471000 	D:\Android\Android Studio\jre\jre\bin\java.exe
+0x00007ffca2700000 - 0x00007ffca28e0000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffca1b00000 - 0x00007ffca1bae000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffc9ed90000 - 0x00007ffc9eff6000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffca2440000 - 0x00007ffca24e1000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffc9fbd0000 - 0x00007ffc9fc6d000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffca1e10000 - 0x00007ffca1e6b000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffca1810000 - 0x00007ffca192f000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffca1250000 - 0x00007ffca13df000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffc9eb50000 - 0x00007ffc9eb70000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffca2550000 - 0x00007ffca2578000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffc9f000000 - 0x00007ffc9f194000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffc9eb70000 - 0x00007ffc9ec0b000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffc9ec90000 - 0x00007ffc9ed86000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffc92dd0000 - 0x00007ffc93039000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.16299.64_none_cc9304e22215ca8f\COMCTL32.dll
+0x00007ffca13e0000 - 0x00007ffca16e8000 	C:\WINDOWS\System32\combase.dll
+0x00007ffc9ec10000 - 0x00007ffc9ec82000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffca1c70000 - 0x00007ffca1c9d000 	C:\WINDOWS\System32\IMM32.DLL
+0x000000006db80000 - 0x000000006dc52000 	D:\Android\Android Studio\jre\jre\bin\msvcr100.dll
+0x000000006dc60000 - 0x000000006e49f000 	D:\Android\Android Studio\jre\jre\bin\server\jvm.dll
+0x00007ffca17d0000 - 0x00007ffca17d8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffc9bad0000 - 0x00007ffc9bad9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffc9b3a0000 - 0x00007ffc9b3c3000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffca23d0000 - 0x00007ffca243c000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffc946e0000 - 0x00007ffc946ea000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffc9b370000 - 0x00007ffc9b39a000 	C:\WINDOWS\SYSTEM32\winmmbase.dll
+0x00007ffc9eb00000 - 0x00007ffc9eb4a000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x00007ffc9bac0000 - 0x00007ffc9bacf000 	D:\Android\Android Studio\jre\jre\bin\verify.dll
+0x00007ffc9b990000 - 0x00007ffc9b9b9000 	D:\Android\Android Studio\jre\jre\bin\java.dll
+0x00007ffc9a850000 - 0x00007ffc9a866000 	D:\Android\Android Studio\jre\jre\bin\zip.dll
+0x00007ffc9fc70000 - 0x00007ffca10a7000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ffca1bb0000 - 0x00007ffca1c56000 	C:\WINDOWS\System32\shcore.dll
+0x00007ffc9f1a0000 - 0x00007ffc9f8e7000 	C:\WINDOWS\System32\windows.storage.dll
+0x00007ffca1930000 - 0x00007ffca1981000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007ffc9eae0000 - 0x00007ffc9eaf1000 	C:\WINDOWS\System32\kernel.appcore.dll
+0x00007ffc9ea50000 - 0x00007ffc9ea9c000 	C:\WINDOWS\System32\powrprof.dll
+0x00007ffc9eac0000 - 0x00007ffc9eadb000 	C:\WINDOWS\System32\profapi.dll
+0x00007ffc9ba40000 - 0x00007ffc9ba4d000 	D:\Android\Android Studio\jre\jre\bin\management.dll
+0x00007ffc9a370000 - 0x00007ffc9a38a000 	D:\Android\Android Studio\jre\jre\bin\net.dll
+0x00007ffc9e280000 - 0x00007ffc9e2e6000 	C:\WINDOWS\system32\mswsock.dll
+0x00007ffc99b60000 - 0x00007ffc99b71000 	D:\Android\Android Studio\jre\jre\bin\nio.dll
+0x00007ffc9e440000 - 0x00007ffc9e457000 	C:\WINDOWS\SYSTEM32\CRYPTSP.dll
+0x00007ffc9de90000 - 0x00007ffc9dec3000 	C:\WINDOWS\system32\rsaenh.dll
+0x00007ffc9e550000 - 0x00007ffc9e575000 	C:\WINDOWS\SYSTEM32\bcrypt.dll
+0x00007ffc9e980000 - 0x00007ffc9e9a9000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007ffc9e460000 - 0x00007ffc9e46b000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+0x00007ffc9e010000 - 0x00007ffc9e049000 	C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+0x00007ffca1800000 - 0x00007ffca1808000 	C:\WINDOWS\System32\NSI.dll
+0x00007ffc980f0000 - 0x00007ffc98106000 	C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL
+0x00007ffc980d0000 - 0x00007ffc980ea000 	C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Djava.rmi.server.hostname=localhost -Xmx1536m -Dkotlin.environment.keepalive 
+java_command: org.jetbrains.kotlin.daemon.KotlinCompileDaemon --daemon-runFilesPath C:\Users\Thinkad\AppData\Local\kotlin\daemon --daemon-autoshutdownIdleSeconds=7200 --daemon-compilerClasspath C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-compiler-embeddable\1.2.71\a79f934bfbc1c7e16638da3474feab351735f1c0\kotlin-compiler-embeddable-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-reflect\1.2.71\7512db3b3182753bd2e48ce8d345abbadc40fe6b\kotlin-reflect-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.2.71\d9717625bb3c731561251f8dd2c67a1011d6764c\kotlin-stdlib-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-script-runtime\1.2.71\d5439926359caa899f41e1915b19d6d23e49750b\kotlin-script-runtime-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-common\1.2.71\ba18ca1aa0e40eb6f1865b324af2f4cbb691c1ec\kotlin-stdlib-common-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\13.0\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\annotations-13.0.jar;D:\Android\Android Studio\jre\lib\tools.jar
+java_class_path (initial): C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-compiler-embeddable\1.2.71\a79f934bfbc1c7e16638da3474feab351735f1c0\kotlin-compiler-embeddable-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-reflect\1.2.71\7512db3b3182753bd2e48ce8d345abbadc40fe6b\kotlin-reflect-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.2.71\d9717625bb3c731561251f8dd2c67a1011d6764c\kotlin-stdlib-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-script-runtime\1.2.71\d5439926359caa899f41e1915b19d6d23e49750b\kotlin-script-runtime-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-common\1.2.71\ba18ca1aa0e40eb6f1865b324af2f4cbb691c1ec\kotlin-stdlib-common-1.2.71.jar;C:\Users\Thinkad\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\13.0\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\annotations-13.0.jar;D:\Android\Android Studio\jre\lib\tools.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\Java\jdk1.8.0_171
+PATH=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\;C:\Git\cmd;D:\MacType;D:\Java\jdk1.8.0_171\bin;C:\Users\Thinkad\AppData\Local\Android\Sdk\platform-tools;D:\Microsoft SQL Server\130\Tools\Binn\;D:\MySQL\MySQL Server 8.0\bin;D:\Android\apktools;C:\Users\Thinkad\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\Thinkad\AppData\Local\Programs\Python\Python36-32\;D:\Microsoft Visual C++\Tools\WinNT;D:\Microsoft Visual C++\MSDev98\Bin;D:\Microsoft Visual C++\Tools;D:\VC98\bin;C:\Users\Thinkad\AppData\Local\Microsoft\WindowsApps;C:\Users\Thinkad\AppData\Roaming\npm;D:\Fiddler
+USERNAME=Thinkad
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 16299 (10.0.16299.15)
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 142 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8294208k(431516k free), swap 19329512k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.152-b02) for windows-amd64 JRE (1.8.0_152-release-1024-b02), built by "builder" with MS VC++ 10.0 (VS2010)
+
+time: Mon Nov 12 22:57:02 2018
+elapsed time: 2 seconds (0d 0h 0m 2s)
+

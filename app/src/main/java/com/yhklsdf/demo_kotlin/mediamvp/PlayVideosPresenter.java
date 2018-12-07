@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.yhklsdf.demo_kotlin.base.BasePresenter;
 import com.yhklsdf.demo_kotlin.bean.PictureBean;
+import com.yhklsdf.demo_kotlin.bean.RecycleViewItemBean;
 import com.yhklsdf.demo_kotlin.bean.VideoBean;
 
 import java.util.Collections;
@@ -19,7 +20,7 @@ public class PlayVideosPresenter<V extends PlayVideosContract.View> extends Play
 
     @SuppressLint("CheckResult")
     @Override
-    void rxRequestVideos(String url, List<VideoBean> videos) {
+    void rxRequestVideos(String url, List<RecycleViewItemBean> videos) {
         mIPlayVideosModel.rxRequestVideos(url, videos)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

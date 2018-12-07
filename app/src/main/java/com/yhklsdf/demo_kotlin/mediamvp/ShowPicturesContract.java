@@ -4,6 +4,8 @@ import com.yhklsdf.demo_kotlin.base.BasePresenter;
 import com.yhklsdf.demo_kotlin.base.IBaseModel;
 import com.yhklsdf.demo_kotlin.base.IBaseView;
 import com.yhklsdf.demo_kotlin.bean.PictureBean;
+import com.yhklsdf.demo_kotlin.bean.RecycleViewItemBean;
+
 import java.util.List;
 import io.reactivex.Observable;
 
@@ -11,7 +13,7 @@ import io.reactivex.Observable;
 public class ShowPicturesContract {
 
     interface model extends IBaseModel {
-        Observable<String> rxRequestPictures(List<PictureBean> pictures, String url);
+        Observable<String> rxRequestPictures(List<RecycleViewItemBean> pictures, String url);
     }
 
     interface View extends IBaseView {
@@ -21,6 +23,6 @@ public class ShowPicturesContract {
     }
 
     abstract static class Present<T> extends BasePresenter<T> {
-        abstract void rxRequestPictures(List<PictureBean> pictures, String url);
+        abstract void rxRequestPictures(List<RecycleViewItemBean> pictures, String url);
     }
 }
