@@ -2,16 +2,12 @@ package com.yhklsdf.demo_kotlin.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import com.yhklsdf.demo_kotlin.R
-import com.yhklsdf.demo_kotlin.fragment.EmptyFragment
 import com.yhklsdf.demo_kotlin.fragment.LearnFragment
 import com.yhklsdf.demo_kotlin.fragment.MediaFragment
 import com.yhklsdf.demo_kotlin.fragment.TalkAiFragment
 import com.yhklsdf.demo_kotlin.utils.FragmentUtil
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_media.*
-import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         var learnFragment = LearnFragment()
         val mediaFragment = MediaFragment()
-        val emptyFragment = EmptyFragment()
         val talkaiFragment = TalkAiFragment()
         //Activity重新创建时可以不完全销毁Fragment，当在onCreate()方法中调用了setRetainInstance(true)后，Fragment恢复时会跳过onCreate()和onDestroy()方法，因此不能在onCreate()中放置一些初始化逻辑
         learnFragment.retainInstance = true

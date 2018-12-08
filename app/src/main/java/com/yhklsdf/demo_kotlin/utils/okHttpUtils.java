@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Type;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -39,6 +40,11 @@ public class okHttpUtils {
     public static void handleResponse(String url, okhttp3.Callback callback) {
         Request request = new Request.Builder().url(url).build();
         client.newCall(request).enqueue(callback);
+    }
+
+    public static String handleReturn(String url) throws IOException {
+        Request request = new Request.Builder().url(url).build();
+        return Objects.requireNonNull(client.newCall(request).execute().body()).string();
     }
 
     //文件下载

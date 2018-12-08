@@ -4,6 +4,16 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.mob.sdk'
+
+// 在MobSDK的扩展中注册MobAPI的相关信息
+MobSDK {
+    appKey "292e01a8067e4"
+    appSecret "639dcf08dde86dc6e570aad10369258e"
+
+    MobAPI {}
+}
+
 android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -52,12 +62,16 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
-    implementation "io.reactivex.rxjava2:rxjava:2.2.0"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.2"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'cn.jzvd:jiaozivideoplayer:6.4.0'
     implementation 'com.github.chrisbanes:PhotoView:2.1.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+    implementation 'com.king.view:counterview:1.1.0'
 }
 kotlin {
     experimental {

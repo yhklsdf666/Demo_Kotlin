@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.SparseArray;
 
-import com.yhklsdf.demo_kotlin.fragment.EmptyFragment;
 import com.yhklsdf.demo_kotlin.mediamvp.PlayVideosFragment;
 import com.yhklsdf.demo_kotlin.mediamvp.ShowPicturesFragment;
 
